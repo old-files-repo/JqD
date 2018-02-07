@@ -22,6 +22,21 @@ namespace JqueryDapper
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new StyleBundle("~/Content/LayoutCSS").Include(
+                "~/Content/Style/menu.css",
+                "~/Content/Style/style.css",
+                "~/Content/Style/owlcarousel.css",
+                "~/Content/Style/owltheme.css",
+                "~/Content/Style/owltransitions.css",
+                "~/Content/Style/fontawesome.min.css", 
+                "~/Content/Style/zerogrid.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/LayoutJS").Include(
+                "~/Scripts/Style/html5.js.js",
+                "~/Scripts/Style/mediaqueries.js",
+                "~/Scripts/Style/owlcarousel.js.js",
+                "~/Scripts/Style/script.js.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));

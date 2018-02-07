@@ -176,17 +176,48 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Common\demo.css" />
+    <Content Include="Content\Common\font-awesome.css" />
+    <Content Include="Content\Common\login.css" />
+    <Content Include="Content\Common\style.css" />
+    <Content Include="Content\Style\fontawesome.min.css" />
+    <Content Include="Content\Style\menu.css" />
+    <Content Include="Content\Style\owlcarousel.css" />
+    <Content Include="Content\Style\owltheme.css" />
+    <Content Include="Content\Style\owltransitions.css" />
+    <Content Include="Content\Style\style.css" />
+    <Content Include="Content\Style\zerogrid.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\Common\bg.gif" />
+    <Content Include="images\Common\blurred.gif" />
+    <Content Include="images\Style\1.jpg" />
+    <Content Include="images\Style\2.jpg" />
+    <Content Include="images\Style\3.jpg" />
+    <Content Include="images\Style\avatar.jpg" />
+    <Content Include="images\Style\logo.png" />
+    <Content Include="images\Style\slider-1.jpg" />
+    <Content Include="images\Style\slider-2.jpg" />
+    <Content Include="images\Style\slider-3.jpg" />
+    <Content Include="images\Style\slider-4.jpg" />
+    <Content Include="images\Style\slider-5.jpg" />
+    <Content Include="images\Style\slider-6.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\js.cookie-2.1.4.min.js" />
+    <Content Include="Scripts\js.cookie.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -195,6 +226,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Style\mediaqueries.js" />
+    <Content Include="Scripts\Style\html5.js" />
+    <Content Include="Scripts\Style\owlcarousel.js" />
+    <Content Include="Scripts\Style\script.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -214,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Common\" />
     <Folder Include="Views\EmbeddedResource\" />
   </ItemGroup>
   <ItemGroup>
@@ -221,7 +257,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JqD.Common\JqD.Common.csproj">

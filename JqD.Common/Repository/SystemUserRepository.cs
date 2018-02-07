@@ -15,12 +15,11 @@ namespace JqD.Common.Repository
                 @"INSERT INTO SystemUser(UserNo,LoginName,Password,LastLoginDate,CreateUser,CreateDate,EditUser,EditDate,IsLogin) 
                 VALUES( @UserNo,@LoginName,@Password,@LastLoginDate,@CreateUser,@CreateDate,@EditUser,@EditDate,@IsLogin );",
             Update =
-                @"UPDATE [SM_SystemUser] SET UserNo = @UserNo , LoginName = @LoginName,Password=@Password,LastLoginDate=@LastLoginDate,"
+                @"UPDATE SystemUser SET UserNo = @UserNo , LoginName = @LoginName,Password=@Password,LastLoginDate=@LastLoginDate,"
                 + "CreateUser = @CreateUser , CreateDate = @CreateDate , EditUser = @EditUser , EditDate = @EditDate , IsLogin = @IsLogin WHERE Id=@Id ;",
-            //Delete SQL 中更新数据库表的 Status 列=-1 （删除）
-            Delete = @"UPDATE [SM_SystemUser] SET Status = -1 WHERE Id = @Id ;",
-            QueryAll = @"SELECT * FROM [SM_SystemUser]; ",
-            QueryOne = @"SELECT * FROM [SM_SystemUser] WHERE Id = @Id ;",
+            Delete = @"DELETE FROM SystemUser WHERE Id = @Id ;",
+            QueryAll = @"SELECT * FROM SystemUser; ",
+            QueryOne = @"SELECT * FROM SystemUser WHERE Id = @Id ;",
             QueryByPage =""
         };
 

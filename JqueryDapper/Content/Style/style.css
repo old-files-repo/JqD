@@ -1,0 +1,186 @@
+
+/*@import url(https://fonts.googleapis.com/css?family=Merriweather);
+@import url(https://fonts.googleapis.com/css?family=Cabin);*/
+/* ---------------------------------------------------------------------------- */
+/* ------------------------------------Reset----------------------------------- */
+/* ---------------------------------------------------------------------------- */
+a,abbr,acronym,address,applet,article,aside,audio,b,blockquote,big,body,center,canvas,caption,cite,code,command,datalist,dd,del,details,dfn,dl,div,dt,em,embed,fieldset,figcaption,figure,font,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,keygen,label,legend,li,meter,nav,object,ol,output,p,pre,progress,q,s,samp,section,small,span,source,strike,strong,sub,sup,table,tbody,tfoot,thead,th,tr,tdvideo,tt,u,ul,var{background:transparent;border:0 none;font-size:100%;margin:0;padding:0;border:0;outline:0;vertical-align:top;}ol, ul {list-style:none;}blockquote, q {quotes:none;}table, table td {padding:0;border:none;border-collapse:collapse;}img {vertical-align:top;}embed {vertical-align:top;}
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {display:block;}
+mark, rp, rt, ruby, summary, time {display:inline;}
+input, textarea {border:0; padding:0; margin:0; outline: 0;}
+iframe {border:0; margin:0; padding:0;}
+input, textarea, select {margin:0; padding:0px;}
+
+
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------- */
+
+html { -webkit-text-size-adjust: none;}
+.video embed,.video object,.video iframe { width: 100%;  height: auto;}
+img{max-width:100%;	height: auto;width: auto\9; /* ie8 */}
+
+a{color: #7fcaad;text-decoration: none;}
+a:hover {color: #628d7c; text-decoration: none;}
+
+h1, h2 	{font-size: 25px;line-height: 30px;}
+h3, h4	{font-size: 20px;line-height: 20px;}
+h5, h6	{font-size: 16px;line-height: 16px;}
+
+p{margin: 10px 0;}
+
+label {cursor:pointer;margin:5px 0;display:block;font-weight:bold;}
+input {display:block;width:100%;color:#222;border:1px solid #d1d1d1;padding:23px;margin: 5px 0 20px 0;font-size: 16px;}
+input[type="submit"]{padding: 15px;}
+textarea {display:block;width:100%;height:250px;background-color:#fff; color:#222;border:1px solid #d1d1d1;padding:10px;margin: 5px 0 20px 0;}
+.copyrights{
+	text-indent:-9999px;
+	height:0;
+	line-height:0;
+	font-size:0;
+	overflow:hidden;
+}
+.t-center{text-align: center;}
+.t-left{text-align: left;}
+.t-right{text-align: right;}
+.f-right{float: right;}
+.f-left{float: left;}
+
+.post{}
+.post:after, .post:before, article:after, article:before, section:after, section:before{clear: both; content: '\0020'; display: block; visibility: hidden; width: 0; height: 0;}
+.post img{margin: 30px 0;}
+
+
+.clear{content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix:after, .clearfix:before{clear: both; content: '\0020'; display: block; visibility: hidden; width: 0; height: 0;}
+
+hr{border: 0;height: 3px;margin: 20px auto;}
+hr.line-1{background: #fff;max-width: 30px;}
+hr.line-2{background: #333;max-width: 40px;height: 4px;}
+
+/*-- Color --*/
+.color-blue, .color-red, .color-yellow, .color-green {font-weight: 500;}
+.color-blue{color: #2FBFCA !important;}
+.color-red{color: #fc5b78 !important;}
+.color-yellow{color: #E8D01D !important;}
+.color-green{color: #17AD4A !important;}
+.color-orange{color: #FF993F !important;}
+/* ---------------------------------------------------------------------------- */
+/* ------------------------------------Html-Body------------------------------- */
+/* ---------------------------------------------------------------------------- */
+html, body {width:100%; padding:0; margin:0;}
+body {font: 14px/25px Arial, Helvetica, sans-serif;font-family: "Merriweather",Georgia,serif;background: #F6F6F6;}
+body .wrap-body{}
+
+/* ---------------------------------------------------------------------------- */
+/* -------------------------------------Header--------------------------------- */
+/* ---------------------------------------------------------------------------- */
+header{text-align: center;background: #fff;}
+header .logo {color: #333;padding: 45px 0 30px;}
+header .logo span{font-family: 'Roboto', sans-serif;font-size: 18px;}
+@media(max-width:767px){
+	header .logo{padding: 30px 0 20px;}
+	header .logo a{font-size: 65px;}
+	header .logo span{font-size: 16px;}
+}
+/* ---------------------------------------------------------------------------- */
+/* -------------------------------------Container------------------------------ */
+/* ---------------------------------------------------------------------------- */
+#container {}
+#container .wrap-container{}
+
+/* ---MainContent-Article--- */
+.post, .content-box {}
+.post .wrap-post, .content-box .wrap-box, .comments-are {padding:30px; position: relative;background: #fff;margin: 50px 0 ;}
+article{text-align: center;}
+article:after, article:before{clear: both; content: '\0020'; display: block; visibility: hidden; width: 0; height: 0;}
+article img{height: auto;width: 100%; border: none;}
+article .entry-header{padding: 40px 0;}
+article .entry-header h2.entry-title{font-family: 'Cabin', Helvetica, sans-serif;font-size: 24px;line-height: 30px;color: #575756;letter-spacing: 2px;font-weight: 600;margin: 0;text-transform: uppercase;}
+article .entry-header h2.entry-title a {color: #575756;margin: 0;}
+article .entry-title-blog a:hover {color: #628d7c;}
+article .entry-header .time {font-family: "Merriweather",Georgia,serif;color: #aaaaaa;font-size: 17px;padding-bottom: 10px;display: block;}
+article .entry-header .cat-links {font-family: 'Cabin', Helvetica, sans-serif;font-size: 17px;color: #7fcaad;text-transform: uppercase;letter-spacing: 2px;padding-top: 10px;display: block;}
+
+article .post-thumbnail-wrap {text-align: center;width: 100%;}
+article .post-thumbnail-wrap img {}
+
+article .entry-content{ padding: 40px 120px; text-align: left;}
+@media(max-width:767px){
+	article .entry-content{ padding: 40px;}
+}
+article .entry-content p{font-size: 16px;color: #686868;}
+article .entry-content blockquote {border-left: 3px solid #1c7791;font-size: 18px;margin: 0 50px;font-style: italic;color: #666;padding-left: 20px;}
+article .entry-content ol {float: left;text-align: justify;margin: 10px 50px;font-size: 16px;list-style-type: circle;}
+
+/* ---------------------------------------------------------------------------- */
+/* -------------------------------------Footer--------------------------------- */
+/* ---------------------------------------------------------------------------- */
+footer{background: #191B1F;color: #ccc;font-size: 14px;padding: 50px 0 20px;}
+
+footer h3{color: #fff;font-size: 20px;margin-bottom: 30px;}
+footer a{color:#92907C;}
+footer a:hover{color:#fff;}
+footer .wrap-footer{color: #92907C;padding: 30px 0 70px;border-bottom: 1px solid #555;}
+footer .wrap-footer ul li {margin-bottom: 5px;border-bottom: 1px solid #555;padding: 10px 0 15px;}
+footer .logo img{max-width: 170px;}
+footer .col-footer-1 {}
+footer .col-footer-2 {}
+footer .col-footer-3 {}
+footer .wrap-map{background: #555;padding: 5px;border: 1px solid #999;}
+footer .logo{top: 0px;margin-bottom: 20px;text-align: center;}
+
+.copyright{}
+.copyright .wrapper{padding: 20px 0;}
+.copyright ul.quick-link li {display: inline-block;margin-right: 10px;}
+
+/* ---------------------------------------------------------------------------- */
+/* -------------------------------------Contact-------------------------------- */
+/* ---------------------------------------------------------------------------- */
+#contact_form, #comment {padding:20px 30px 0;}
+
+#ff .sendButton , #comment_form .sendButton {cursor:pointer;background-color:#575756;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;width:20%;color:#ffffff;margin-top: 50px;}
+#ff .sendButton:hover , #comment_form .sendButton:hover{opacity: 0.8;}
+
+/* ---------------------------------------------------------------------------- */
+/* -------------------------------------Button--------------------------------- */
+/* ---------------------------------------------------------------------------- */
+a.button{background-color: #333;border-radius: 4px; padding: 10px 15px;color: #fff;}
+a.button:hover{background-color: #eee;color: #333;}
+
+/* ---------------------------------------------------------------------------- */
+/* ----------------------------------Carousel---------------------------------- */
+/* ---------------------------------------------------------------------------- */
+.owl-controls .owl-buttons div {position: absolute;color:#777;opacity: 0.7;}
+.owl-carousel:hover .owl-buttons div {color:#fff;}
+.owl-controls .owl-buttons .owl-prev {left: 10px;top: 50%;}
+.owl-controls .owl-buttons .owl-next {right: 10px;top: 50%;}
+.owl-carousel{margin-bottom: 20px;}
+.owl-carousel .owl-buttons div i {font-size: 40px;margin: -20px 0 0;}
+.owl-carousel .item{position: relative;}
+.carousel-caption {position: absolute;top: 50%;transform: translateY(-50%);bottom: auto;padding: 0;text-align: center;width: 100%;left: auto;right: auto;text-shadow: none;}
+.carousel-caption-title {margin: 0;padding: 0;}
+.carousel-caption-title a {font-size: 18px;font-size: 1.125em;font-family: 'Cabin', Helvetica, sans-serif;text-transform: uppercase;letter-spacing: 2px;color: #373735;}
+.carousel-caption-title {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.carousel-caption-title a:hover {color: #628d7c;}
+.carousel-caption-category {margin: 0;padding: 0;}
+.carousel-caption-category a {color: #aaaaaa;font-size: 14px;font-size: 0.875em;letter-spacing: .5px;text-transform: lowercase;}
+.carousel-caption-category a:hover {color: #628d7c;}
+.carousel-caption-inner {background: #fff;padding: 30px 40px;max-width: 80%;margin: 0 auto;display: inline-block;}
+
+/* ---------------------------------------------------------------------------- */
+/* --------------------------------Google-Map---------------------------------- */
+/* ---------------------------------------------------------------------------- */
+.maps iframe{
+    pointer-events: none;
+}

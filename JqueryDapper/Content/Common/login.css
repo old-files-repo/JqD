@@ -1,0 +1,26 @@
+﻿body {
+    background: #563c55 url(/images/Common/blurred.gif) no-repeat center top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+.container > header h1,
+.container > header h2 {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.dl_button {
+    border: 0;
+    height: 45px;
+    border-radius: 4px;
+    background: url("/images/Common/blurred.gif") repeat-x left top;
+    width: 100%;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.dl_button:hover {
+    background: #00bfff;
+}

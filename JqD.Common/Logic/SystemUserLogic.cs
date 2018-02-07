@@ -26,7 +26,8 @@ namespace JqD.Common.Logic
             SystemUser systemUser;
             try
             {
-                systemUser = _systemUserRepository.GetAll().Single(x=>x.LoginName== userName);
+                var list = _systemUserRepository.GetAll().ToList();
+                systemUser= list.Single(x=>x.LoginName== userName);
             }
             catch
             {

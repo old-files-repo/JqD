@@ -1,355 +1,100 @@
 ﻿@{
+    ViewBag.Title = "Login";
     Layout = null;
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>中航电测集团运营系统（ZOS）</title>
-    <link href="@Url.Action("Index", "EmbeddedResource", new {resourcePath = "Content", resourceName = "easyui.css"})" rel="stylesheet" />
-    <link href="@Url.Action("Index", "EmbeddedResource", new {resourcePath = "Content", resourceName = "right.css"})" rel="stylesheet" />
-    <link href="@Url.Action("Index", "EmbeddedResource", new {resourcePath = "Content", resourceName = "font-awesome.min.css" })" rel="stylesheet" />
-    <link href="@Url.Action("Index", "EmbeddedResource", new {resourcePath = "Content", resourceName = "login.css" })" rel="stylesheet" />
-    <style type="text/css">
-        #modifyPasswordWarning td {
-            padding: 5px;
-        }
+    <title>JqD</title>
 
-        #modifyPasswordWarning li:last-child {
-            text-indent: 2em;
-        }
-
-        .tips {
-            color: red;
-        }
-    </style>
-    <script src="@Url.Action("Index", "EmbeddedResource", new { resourcePath = "Scripts", resourceName = "jquery-1.12.4.min.js" })"></script>
-    <script src="@Url.Action("Index", "EmbeddedResource", new { resourcePath = "Scripts", resourceName = "jquery.easyui.min.js" })"></script>
-    <script src="@Url.Action("Index", "EmbeddedResource", new { resourcePath = "Scripts", resourceName = "jquery.validate.min.js" })"></script>
-    <script src="@Url.Action("Index", "EmbeddedResource", new { resourcePath = "Scripts", resourceName = "js.cookie-2.1.4.min.js" })"></script>
 </head>
-
 <body onkeydown="onReturn();">
-    <form id="loginForm" method="post">
-        <div class="dl_top">
-            <div>
-                <img src="@Url.Action("Index", "EmbeddedResource", new {resourcePath = "images", resourceName = "dl_logo01.png"})" style="margin-bottom: 20px;" alt="" />
+    <div class="container">
+        <header>
+            <h1>Custom <strong>Login Form</strong> Styling</h1>
+            <h2>Creative and modern form design with CSS magic</h2>
+            <div class="support-note">
+                <span class="note-ie">Sorry, only modern browsers.</span>
             </div>
-            <div>
-                <h2 class="login_name">中航电测集团运营系统（JqD）</h2>
-            </div>
-        </div>
-        <div class="page1280">
-            <div class="dl_page">
-                <div class="dl_form">
-                    <div class="dl_input_page">
-                        <span>用户名：</span><input id="userName" name="userName" type="text" class="dl_input" /><img src="@Url.Action("Index", "EmbeddedResource", new {resourcePath = "images", resourceName = "yh_icon.png"})" alt="" />
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="dl_input_page">
-                        <span>密&nbsp;&nbsp;&nbsp;码：</span><input id="password" name="password" type="password" class="dl_input" /><img src="@Url.Action("Index", "EmbeddedResource", new {resourcePath = "images", resourceName = "yh_icon2.png"})" alt="" />
-                        <div class="clearfix"></div>
-                        <p id="passwordToolTip" style="line-height: 15px; color: red;"></p>
-                    </div>
+        </header>
+        <section class="main">
+            <form class="form-3">
+                <p class="clearfix">
+                    <label for="userName">Username</label>
+                    <input type="text" name="userName" id="userName" placeholder="Username">
+                </p>
+                <p class="clearfix">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                </p>
+                <p class="clearfix">
+                    <input type="checkbox" name="remember" id="remember">
+                    <label for="remember">Remember me</label>
+                </p>    
+                <p class="clearfix">
                     <div>
-                        <a id="login"><input type="reset" name="button" id="button" value="登录" class="dl_button" /></a>
+                        <a ><input type="reset" id="submit" name="submit" value="Sign in" class="dl_button" /></a>
                     </div>
-                    <div class="download stay_right">
-                        <a href="@Url.Action("Index", "EmbeddedResource", new {resourcePath = "files", resourceName = "CLodop_HTM_WEB_PRINT(64bit)2.067.exe"})">
-                            <img src="~/images/download.png" />
-                            <p>组件下载</p>
-                        </a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="dl_help">
-                        <p>版权所有：中航电测仪器股份有限公司</p>
-                        <p>技术支持：石家庄华燕交通科技有限公司</p>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </form>
-
-    <!-- 弹出窗口 -->
-    <div id="form-alerts" hidden>
-        <div class="tip-div">
-            @* ReSharper disable once UnknownCssClass *@
-            <label class="danger" style="color: red; line-height: 3px;">
-            </label>
-        </div>
-        <div class="tip-button">
-            <button button type="button" class="button-qx button-bc-width" id="closeError">关闭</button>
-        </div>
-    </div>
-    <div id="modifyPasswordWarning" hidden>
-        <div class="tip-div">
-            <form id="modifyPasswordForm">
-                <table>
-                    <tr>
-                        <td colspan="2" class="tips">
-                            <ul>
-                                <li>
-                                    提醒:
-                                </li>
-                                <li>
-                                    您当前密码为系统初始密码,为了您的账号安全,请您修改初始密码。<br /><br />
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>旧密码</td>
-                        <td>
-                            <input type="password" id="oldPassword" class="input_style input_width input_height" name="oldPassword" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>新密码</td>
-                        <td>
-                            <input type="password" id="newPassword" class="input_style input_width input_height" name="newPassword" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>确认新密码</td>
-                        <td>
-                            <input type="password" id="confirmNewPassword" class="input_style input_width input_height" name="confirmNewPassword" />
-                        </td>
-                    </tr>
-                </table>
+                </p>
             </form>
-        </div>
-        <div class="tip-button">
-            <button type="button" class="button-qx button-bc-width" id="confirmModify">确认</button>
-        </div>
+        </section>
     </div>
-    <script>
-        $(document).ready(function () {
-            //若存在Cookie，显示用户名
-            var currentJqDLoginNameCookie = Cookies.get('JqDLoginName');
-            if (currentJqDLoginNameCookie !== null && currentJqDLoginNameCookie !== undefined) {
-                $("#userName").val(currentJqDLoginNameCookie);
-            }
-            $.validator.setDefaults({
-                onfocusout: function (element) { $(element).valid(); },
-                errorPlacement: function (error, element) {
-                    const errorContent = $(error).text();
-                    if ($(error).text() === "") {
-                        const a = $(element).tooltip({
-                        });
-                        a.tooltip("destroy");
-                    } else {
-                        const popover = $(element).tooltip({
-                            content: errorContent,
-                            position: "right"
-                        });
-                        popover.content = errorContent;
-                        popover.tooltip("show");
-                    }
-                },
-                success: "valid",
-                highlight: function (element) {
-                    $(element).addClass("validate_error");
-                },
-                unhighlight: function (element) {
-                    $(element).removeClass("validate_error");
-                    $(element).tooltip("destroy");
-                },
-                showErrors: function (errorMap, errorList) {
-                    if (errorList.length) {
-                        const firstError = errorList.shift();
-                        const firstErrorList = [];
-                        firstErrorList.push(firstError);
-                        this.errorList = firstErrorList;
-                    };
-                    this.defaultShowErrors();
-                }
-            });
-
-            var validator = $("#modifyPasswordForm").validate({
-                rules: {
-                    oldPassword: {
-                        required: true,
-                        remote: {
-                            url: "/Common/Authentication/IsOldPasswordCorrect",
-                            type: 'POST',
-                            data: {
-                                oldPassword: function () {
-                                    return $("#oldPassword").val();
-                                }
-                            }
-                        }
-                    },
-                    newPassword: {
-                        required: true,
-                        minlength: 8,
-                        isEqualFromOld: ["#oldPassword"]
-                    },
-                    confirmNewPassword: {
-                        equalTo: "#newPassword"
-                    }
-                },
-                messages: {
-                    oldPassword: {
-                        required: "请输入旧密码",
-                        remote: "旧密码错误"
-                    },
-                    newPassword: {
-                        required: "请输入新密码",
-                        minlength: "密码最少输入8位"
-                    },
-                    confirmNewPassword: {
-                        equalTo: "两次输入的新密码必须相同"
-                    }
-                }
-            });
-
-            $("#modifyPasswordWarning").window({
-                height: 290,
-                width: 360,
-                top: ($(window).height() - 290) * 0.5,
-                left: ($(window).width() - 360) * 0.5,
-                modal: true,
-                closed: true,
-                minimizable: false,
-                collapsible: false,
-                maximizable: false,
-                draggable: true,
-                resizable: false,
-                title: "修改密码"
-            });
-
-            $("#form-alerts").window({
-                height: 130,
-                width: 410,
-                top: ($(window).height() - 130) * 0.5,
-                left: ($(window).width() - 410) * 0.5,
-                modal: true,
-                closed: true,
-                minimizable: false,
-                collapsible: false,
-                maximizable: false,
-                draggable: true,
-                resizable: false,
-                title: "系统错误"
-            });
-
-            $("#closeError").click(function () {
-                $("#form-alerts").window("close");
-            });
-
-            $.ajaxSetup({
-                cache: false,
-                error: function (xhr) {
-                    const $alerts = $('#form-alerts');
-                    $alerts.find('.danger').empty();
-                    const validationErrors = $alerts.find('.danger');
-                    if (xhr) {
-                        $(validationErrors).append(`<strong>${jQuery.parseJSON(xhr.responseText).Message}</strong>，请联系管理员`);
-                    }
-                    $("#form-alerts").window("open");
-                }
-            });
-
-            jQuery.validator.addMethod("isEqualFromOld", function (value, element, params) {
-                return this.optional(element) || value !== $(params[0]).val();
-            }, "新密码不能与原始密码相同");
-
-            $("#confirmModify").click(function () {
-                if (!validator.form()) {
-                    return;
-                }
-                const oldPassword = $("#oldPassword").val();
-                const newPassword = $("#newPassword").val();
-                debugger;
-
-                $.ajax({
-                    url: "/Common/Authentication/UpdateLoginPassword",
-                    method: 'POST',
-                    data: { oldPassword: oldPassword, newPassword: newPassword },
-                    dataType: 'JSON'
-                }).done(function (result) {
-                    if (result.HandleResult === "Success") {
-                        $("#modifyPasswordWarning").window("close");
-                        hy.alert({
-                            content: "修改成功,请您重新登录!",
-                            img: "tip_icon_succeed"
-                        });
-                        $("#modifyPasswordForm")[0].reset();
-                        validator.resetForm();
-                    }
-                });
-            });
-
-            $("#login").on("click", function () {
-                var name = $("#userName").val();
-                name = name.toUpperCase();
-                const password = $("#password").val();
-                const returnUrl = $("#returnUrl").val();
-                if (name === '') {
-                    $("#signinhint").text('Pelease input Name!');
-                    $("#userName").focus();
-                    return;
-                }
-                if (password === '') {
-                    $("#signinhint").text('Pelease input Password!');
-                    $("#password").focus();
-                    return;
-                }
-                //记住登录名
-                if (currentJqDLoginNameCookie === null || currentJqDLoginNameCookie === undefined) {
-                    Cookies.set('JqDLoginName', name);
-                }
-                $("#login").attr("disable", "");
-                $.ajax({
-                    url: '@Url.Content("~/")' + "Common/Authentication/Login",
-                    method: 'POST',
-                    data: { UserName: name, Password: password, ReturnUrl: returnUrl },
-                    dataType: 'json'
-                }).done(function (result) {
-                    if (result.Success === true) {
-
-                        window.location.href = '/';
-                    } else if (result.Success === 'IsSimple') {
-                        // 添加代码
-                        $("#modifyPasswordWarning").window("open");
-                        $("#oldPassword").focus();
-                    } else {
-                        for (let i = 0; i < result.Errors.length; i++) {
-                            const error = result.Errors[i];
-                            $(`[name="${error.Name}"]`).next('span').html(error.ErrorMessage);
-                        }
-                        $('#txtPassword').val('');
-                    }
-                });
-
-            });
-
-
-        });
-        //回车时，默认是登陆
-        function onReturn() {
-            if (window.event.keyCode === 13) {
-                if (document.all('login') !== null) {
-                    document.all('login').click();
-                }
-            }
-        }
-        //大写锁定提示
-        function detectCapsLock(event) {
-            const e = event || window.event;
-            const keyCode = e.keyCode || e.which; // 按键的keyCode
-            const isShift = e.shiftKey || (keyCode === 16) || false; // shift键是否按住
-            if (
-                ((keyCode >= 65 && keyCode <= 90) && !isShift) // Caps Lock 打开，且没有按住shift键
-                    || ((keyCode >= 97 && keyCode <= 122) && isShift)// Caps Lock 打开，且按住shift键
-            ) {
-                $("#passwordToolTip").show();
-                $("#passwordToolTip").text("大写锁定已打开");
-            } else {
-                $("#passwordToolTip").hide();
-            }
-        }
-        document.getElementById("password").onkeypress = detectCapsLock;
-    </script>
 </body>
 </html>
+
+<link href="~/Content/Common/font-awesome.css" type="text/css" rel="stylesheet" />
+<link href="~/Content/Common/style.css" type="text/css" rel="stylesheet" />
+<link href="~/Content/Common/demo.css" type="text/css" rel="stylesheet" />
+<link href="~/Content/Common/Login.css" type="text/css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.12.4.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/js.cookie-2.1.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //若存在Cookie，显示用户名
+        var currentJqdLoginNameCookie = Cookies.get('JqDLoginName');
+        if (currentJqdLoginNameCookie !== null && currentJqdLoginNameCookie !== undefined) {
+            $("#userName").val(currentJqdLoginNameCookie);
+        }
+
+        $("#submit").on("click", function () {
+            var name = $("#userName").val();
+            const password = $("#password").val();
+            if (name === '') {
+                $("#userName").focus();
+                return;
+            }
+            if (password === '') {
+                $("#password").focus();
+                return;
+            }
+            //记住登录名
+            if (currentJqdLoginNameCookie === null || currentJqdLoginNameCookie === undefined) {
+                Cookies.set('JqDLoginName', name);
+            }
+            $("#submit").attr("disable", "");
+            $.ajax({
+                url: '@Url.Content("~/")' + "Authentication/Login",
+                method: 'POST',
+                data: { UserName: name, Password: password },
+                dataType: 'json'
+            }).done(function (result) {
+                if (result.Success === true) {
+                    window.location.href = '/';
+                } else {
+                    $("#password").value("");
+                    $("#userName").focus();
+                }
+            });
+        });
+    });
+
+    //回车时，默认是登陆
+    function onReturn() {
+        if (window.event.keyCode === 13) {
+            if (document.all('submit') !== null) {
+                document.all('submit').click();
+            }
+        }
+    }
+</script>

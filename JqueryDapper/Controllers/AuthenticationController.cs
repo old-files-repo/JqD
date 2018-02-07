@@ -22,7 +22,7 @@ namespace JqueryDapper.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            return View(new LoginViewModel { ReturnUrl = returnUrl });
+            return View();
         }
 
         [HttpPost]
@@ -31,7 +31,7 @@ namespace JqueryDapper.Controllers
         {
             var loginUser = _systemUserLogic.Login(command.UserName, command.Password);
             FormsAuthenticateUser(loginUser.SystemUserId + "_" + Guid.NewGuid());
-            return command.Password == "12345678" ? Json(new { Success = "IsSimple" }) : Json(new { Success = true });
+            return Json(new { Success = true });
         }
 
         private void FormsAuthenticateUser(string userName)
