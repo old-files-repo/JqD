@@ -16,7 +16,6 @@ namespace JqD.Data.CodeSection
         // ReSharper disable once InconsistentNaming
         private LoginUserInformationForCodeSection currentUser { get; set; }
 
-
         public static LoginUserSection Start(LoginUserInformationForCodeSection systemUser)
         {
             var section = new LoginUserSection(systemUser);

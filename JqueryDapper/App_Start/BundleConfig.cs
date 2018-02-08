@@ -25,6 +25,7 @@ namespace JqueryDapper
             bundles.Add(new StyleBundle("~/Content/LayoutCSS").Include(
                 "~/Content/Style/menu.css",
                 "~/Content/Style/style.css",
+                "~/Content/App/AutoStyle.css",
                 "~/Content/Style/owlcarousel.css",
                 "~/Content/Style/owltheme.css",
                 "~/Content/Style/owltransitions.css",
@@ -32,10 +33,13 @@ namespace JqueryDapper
                 "~/Content/Style/zerogrid.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/LayoutJS").Include(
-                "~/Scripts/Style/html5.js.js",
+                "~/Scripts/Style/html5.js",
                 "~/Scripts/Style/mediaqueries.js",
-                "~/Scripts/Style/owlcarousel.js.js",
-                "~/Scripts/Style/script.js.js"));
+                "~/Scripts/Style/owlcarousel.js",
+                "~/Scripts/Style/script.js",
+                "~/Scripts/js2form.js",
+                "~/Scripts/form2js.js"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

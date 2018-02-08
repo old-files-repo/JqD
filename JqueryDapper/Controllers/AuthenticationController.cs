@@ -34,9 +34,10 @@ namespace JqueryDapper.Controllers
             return Json(new { Success = true });
         }
 
-        private void FormsAuthenticateUser(string userName)
+        private void FormsAuthenticateUser(string userId)
         {
-            var cookie = FormsAuthentication.GetAuthCookie(userName, false);
+            //设置用户的 cookie 的值
+            var cookie = FormsAuthentication.GetAuthCookie(userId, false);
 
             if (string.IsNullOrEmpty(ApplicationDomain))
             {

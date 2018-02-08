@@ -10,7 +10,7 @@ namespace JqD.Repository
         public static SqlStrings UserInfoSql = new SqlStrings
         {
             TableName = "UserInfo",
-            Add = @"INSERT INTO UserImfo (CheckNo,PassWord,Status,CreateOperator,CreateOperateDate,
+            Add = @"INSERT INTO UserInfo (CheckNo,PassWord,Status,CreateOperator,CreateOperateDate,
                 EditOperator,EditOperateDate) VALUES 
                 (@CheckNo,@PassWord,@Status,@CreateOperator,@CreateOperateDate,
                 @EditOperator,@EditOperateDate)",

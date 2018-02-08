@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Linq;
+using JqD.Command.SystemManage;
 using JqD.Common.Entities;
 using JqD.Common.ILogic;
 using JqD.Common.IRepository;
 using JqD.Common.Models;
+using JqD.Data.CodeSection;
 using JqD.Data.Logic;
+using JqD.Infrustruct.Enums;
 
 namespace JqD.Common.Logic
 {
@@ -21,13 +24,25 @@ namespace JqD.Common.Logic
             _currentTimeProvider = currentTimeProvider;
         }
 
+        public void Insert(AddUserCommand user)
+        {
+            var info = new SystemUser
+            {
+                LoginName= user.LoginName,
+                Password= user.Password,
+                CreateUser= LoginUserSection.CurrentUser.LoginName,
+                CreateDate= _currentTimeProvider.CurrentTime()
+            };
+            _systemUserRepository.Add(info);
+        }
+
         public LoginUserInformation Login(string userName, string password)
         {
             SystemUser systemUser;
             try
             {
-                var list = _systemUserRepository.GetAll().ToList();
-                systemUser= list.Single(x=>x.LoginName== userName);
+                systemUser =_systemUserRepository.GetAll()
+                    .Single(x=>x.LoginName== userName);
             }
             catch
             {
@@ -38,19 +53,19 @@ namespace JqD.Common.Logic
                 throw new Exception("登陆密码错误");
             }
             systemUser.LastLoginDate =_currentTimeProvider.CurrentTime();
-            systemUser.IsLogin = 1;
+            systemUser.IsLogin = UserEnum.IsLogin.Logining;
             _systemUserRepository.Update(systemUser);
             var loginUserInfo = new LoginUserInformation
             {
                 SystemUserId= systemUser.Id,
-                LoginName= systemUser.UserNo
+                LoginName= systemUser.LoginName
             };
             return loginUserInfo;
         }
 
         public void LogOut(string userNo)
         {
-            var systemUser = _systemUserRepository.GetAll().Single(x => x.UserNo == userNo);
+            var systemUser = _systemUserRepository.GetAll().Single(x => x.LoginName == userNo);
             systemUser.IsLogin = 0;
             _systemUserRepository.Update(systemUser);
         }
@@ -60,8 +75,8 @@ namespace JqD.Common.Logic
             var systemUser = _systemUserRepository.Get(sysUserId);
             var loginUserInfo =new LoginUserInformation
             {
-                SystemUserId = systemUser.Id,
-                LoginName = systemUser.UserNo
+                LoginName = systemUser.LoginName,
+                SystemUserId = systemUser.Id
             };
             return loginUserInfo;
         }

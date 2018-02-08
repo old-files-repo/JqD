@@ -8,9 +8,11 @@
     @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap", "~/bundles/modernizr", "~/bundles/LayoutJS")
 </head>
 <body>
+    @Html.Partial("_Top")
     <div>
         @RenderBody()
     </div>
+    @Html.Partial("_Footer")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -2,10 +2,9 @@
 {
     public class PasswordHasher
     {
-
         public static bool ValidateHash(string password, string hash)
         {
-            return password== hash;
+            return password == hash;
         }
     }
 }

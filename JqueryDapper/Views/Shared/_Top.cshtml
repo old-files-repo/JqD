@@ -1,0 +1,42 @@
+﻿@{
+    string requestUrl = Request.Url.ToString();
+}
+<div id="cssmenu" class="align-center">
+    <ul class="top_menu">
+        <li class="active Home"><a href="@Url.Action("Index", "Home")"><span>Home</span></a></li>
+        <li class="has-sub">
+            <a href="#"><span>Blog</span></a>
+            <ul>
+                <li class="has-sub">
+                    <a href="#"><span>Item 1</span></a>
+                    <ul>
+                        <li><a href="#"><span>Sub Item</span></a></li>
+                        <li class=""><a href="#"><span>Sub Item</span></a></li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a href="#"><span>Item 2</span></a>
+                    <ul>
+                        <li><a href="#"><span>Sub Item</span></a></li>
+                        <li class=""><a href="#"><span>Sub Item</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a href="#"><span>About</span></a></li>
+        <li class="SystemUser"><a href="@Url.Action("Index", "SystemUser")"><span>SystemManage</span></a></li>
+    </ul>
+</div>
+<header>
+    <div class="logo">
+        <a href="#"><img src="/images/Style/logo.png" alt="" /></a>
+    </div>
+</header>
+<script type="text/javascript">
+    var requestUrl = '@requestUrl'.split("/").pop();
+    if (requestUrl === "") {
+        requestUrl = "Home";
+    }
+    $(".top_menu > li").removeClass("active");
+    $(`.${requestUrl}`).addClass("active");
+</script>

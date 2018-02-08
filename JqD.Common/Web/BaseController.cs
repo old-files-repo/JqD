@@ -65,15 +65,9 @@ namespace JqD.Common.Web
                 _loginUserSection = LoginUserSection.Start(new LoginUserInformationForCodeSection
                 {
                     SystemUserId = LoginUser.SystemUserId,
-                    LoginName = LoginUser.LoginName,
-                    UserInfo = new UserInfo
-                    {
-                        UserId = LoginUser.UserInfo.UserId,
-                        UserNo = LoginUser.UserInfo.UserNo
-                    }
+                    LoginName = LoginUser.LoginName
                 });
                 base.OnActionExecuting(filterContext);
-
             }
         }
 

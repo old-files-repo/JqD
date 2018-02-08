@@ -12,10 +12,10 @@ namespace JqD.Common.Repository
             TableName = "SystemUser",
             //Add SQL 中 数据库表的 Status 列默认值=1 （正常）
             Add =
-                @"INSERT INTO SystemUser(UserNo,LoginName,Password,LastLoginDate,CreateUser,CreateDate,EditUser,EditDate,IsLogin) 
-                VALUES( @UserNo,@LoginName,@Password,@LastLoginDate,@CreateUser,@CreateDate,@EditUser,@EditDate,@IsLogin );",
+                @"INSERT INTO SystemUser(LoginName,Password,LastLoginDate,CreateUser,CreateDate,EditUser,EditDate,IsLogin) 
+                VALUES(@LoginName,@Password,@LastLoginDate,@CreateUser,@CreateDate,@EditUser,@EditDate,@IsLogin );",
             Update =
-                @"UPDATE SystemUser SET UserNo = @UserNo , LoginName = @LoginName,Password=@Password,LastLoginDate=@LastLoginDate,"
+                @"UPDATE SystemUser SET LoginName = @LoginName,Password=@Password,LastLoginDate=@LastLoginDate,"
                 + "CreateUser = @CreateUser , CreateDate = @CreateDate , EditUser = @EditUser , EditDate = @EditDate , IsLogin = @IsLogin WHERE Id=@Id ;",
             Delete = @"DELETE FROM SystemUser WHERE Id = @Id ;",
             QueryAll = @"SELECT * FROM SystemUser; ",

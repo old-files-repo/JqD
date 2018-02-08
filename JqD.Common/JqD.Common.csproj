@@ -119,6 +119,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JqD.Command\JqD.Command.csproj">
+      <Project>{F4ED364E-2165-46A6-A9EF-284C81D20CD0}</Project>
+      <Name>JqD.Command</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JqD.Data\JqD.Data.csproj">
       <Project>{6CC373CC-791A-4474-B9C8-0397D759B753}</Project>
       <Name>JqD.Data</Name>

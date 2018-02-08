@@ -1,13 +1,10 @@
 ﻿using System;
+using JqD.Infrustruct.Enums;
 
 namespace JqD.Common.Entities
 {
     public class SystemUser : Entity
     {
-        /// <summary>
-        /// 对应员工Id
-        /// </summary>
-        public int UserId { get; set; }
 
         /// <summary>
         /// 登陆用户名
@@ -15,19 +12,14 @@ namespace JqD.Common.Entities
         public string LoginName { get; set; }
 
         /// <summary>
-        /// 对应员工编号
+        /// 密码
         /// </summary>
-        public string UserNo { get; set; }
+        public string Password { get; set; }
 
         /// <summary>
         /// 用户最后登录时间
         /// </summary>
         public DateTime? LastLoginDate { get; set; }
-
-        /// <summary>
-        /// 密码
-        /// </summary>
-        public string Password { get; set; }
 
         /// <summary>
         /// 创建人
@@ -52,6 +44,6 @@ namespace JqD.Common.Entities
         /// <summary>
         /// 判断用户是否登录，1=登录，0=未登录
         /// </summary>
-        public int IsLogin { get; set; }
+        public UserEnum.IsLogin IsLogin { get; set; }
     }
 }

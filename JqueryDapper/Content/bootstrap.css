@@ -5633,17 +5633,19 @@ body.modal-open,
 }
 
 .modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
-          transform: translate(0, 0);
+  -webkit-transform: translate(0, -50%);
+      -ms-transform: translate(0, -50%);
+       -o-transform: translate(0, -50%);
+          transform: translate(0, -50%);
 }
 
 .modal-dialog {
-  z-index: 1050;
-  width: auto;
-  padding: 10px;
-  margin-right: auto;
-  margin-left: auto;
+    position:absolute;
+    width:auto;
+    margin:10px auto;
+    left:0;
+    right:0;
+    top:50%
 }
 
 .modal-content {
