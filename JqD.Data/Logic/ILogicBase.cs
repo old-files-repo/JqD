@@ -15,5 +15,7 @@ namespace JqD.Data.Logic
         T Get(int id);
 
         IEnumerable<T> GetAll();
+
+        IEnumerable<T> QueryByPage(int startNumber, int endNumber, out int totleRecords);
     }
 }

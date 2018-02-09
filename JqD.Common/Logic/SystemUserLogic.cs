@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using JqD.Command.SystemManage;
 using JqD.Common.Entities;
 using JqD.Common.ILogic;
@@ -8,6 +9,8 @@ using JqD.Common.Models;
 using JqD.Data.CodeSection;
 using JqD.Data.Logic;
 using JqD.Infrustruct.Enums;
+using JqD.Logic;
+using log4net.Core;
 
 namespace JqD.Common.Logic
 {
@@ -26,6 +29,23 @@ namespace JqD.Common.Logic
 
         public void Insert(AddUserCommand user)
         {
+            if (string.IsNullOrEmpty(user.LoginName) || string.IsNullOrEmpty(user.Password))
+            {
+                throw new LogException(LogicExceptionMessage.LoginNameOrPasswordIsNull);
+            }
+            if (!IsNumAndEnCh(user.LoginName)||!IsNumAndEnCh(user.Password))
+            {
+                throw new LogException(LogicExceptionMessage.LoginNameOrPasswordIsAlphabet);
+            }
+            if (!IsLengthMoreThanSix(user.LoginName) || !IsLengthMoreThanSix(user.Password))
+            {
+                throw new LogException(LogicExceptionMessage.LoginNameOrPasswordLengthMoreThanSix);
+            }
+            var equalName = _systemUserRepository.GetAll().FirstOrDefault(x=>x.LoginName== user.LoginName);
+            if (equalName != null)
+            {
+                throw new LogException(LogicExceptionMessage.TheSameLoginName);
+            }
             var info = new SystemUser
             {
                 LoginName= user.LoginName,
@@ -34,6 +54,18 @@ namespace JqD.Common.Logic
                 CreateDate= _currentTimeProvider.CurrentTime()
             };
             _systemUserRepository.Add(info);
+        }
+
+        private static bool IsNumAndEnCh(string input)
+        {
+            const string pattern = @"^[A-Za-z0-9]+$";
+            var regex = new Regex(pattern);
+            return regex.IsMatch(input);
+        }
+
+        private static bool IsLengthMoreThanSix(string input)
+        {
+            return input.Length>=6;
         }
 
         public LoginUserInformation Login(string userName, string password)

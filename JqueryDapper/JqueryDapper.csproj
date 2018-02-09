@@ -171,6 +171,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LoginCommand.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\SystemManage\SystemUsersPageViewModel.cs" />
     <Compile Include="WindsorInstaller\WindsorBootstrapper.cs" />
     <Compile Include="WindsorInstaller\WindsorControllerFactory.cs" />
   </ItemGroup>
@@ -209,6 +210,7 @@
     <Content Include="images\Style\slider-6.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\ajaxErrorHandler.js" />
     <Content Include="Scripts\App\home.js" />
     <Content Include="Scripts\App\SystemManage\systemuser.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -277,6 +279,10 @@
     <ProjectReference Include="..\JqD.Data\JqD.Data.csproj">
       <Project>{6CC373CC-791A-4474-B9C8-0397D759B753}</Project>
       <Name>JqD.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JqD.Infrustruct\JqD.Infrustruct.csproj">
+      <Project>{AE6753A1-5DEB-426F-BFA5-A9F7CE5A73B3}</Project>
+      <Name>JqD.Infrustruct</Name>
     </ProjectReference>
     <ProjectReference Include="..\JqD.Logic\JqD.Logic.csproj">
       <Project>{1A975A49-783D-461D-819F-AC849AB7F0EC}</Project>

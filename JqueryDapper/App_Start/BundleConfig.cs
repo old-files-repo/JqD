@@ -38,7 +38,8 @@ namespace JqueryDapper
                 "~/Scripts/Style/owlcarousel.js",
                 "~/Scripts/Style/script.js",
                 "~/Scripts/js2form.js",
-                "~/Scripts/form2js.js"
+                "~/Scripts/form2js.js",
+                "~/Scripts/ajaxErrorHandler.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

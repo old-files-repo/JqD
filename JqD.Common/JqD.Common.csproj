@@ -131,6 +131,10 @@
       <Project>{AE6753A1-5DEB-426F-BFA5-A9F7CE5A73B3}</Project>
       <Name>JqD.Infrustruct</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JqD.Logic\JqD.Logic.csproj">
+      <Project>{1A975A49-783D-461D-819F-AC849AB7F0EC}</Project>
+      <Name>JqD.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

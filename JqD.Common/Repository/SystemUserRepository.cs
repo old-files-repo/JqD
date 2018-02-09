@@ -10,17 +10,17 @@ namespace JqD.Common.Repository
         private static readonly SqlStrings SystemUserSql = new SqlStrings
         {
             TableName = "SystemUser",
-            //Add SQL 中 数据库表的 Status 列默认值=1 （正常）
-            Add =
-                @"INSERT INTO SystemUser(LoginName,Password,LastLoginDate,CreateUser,CreateDate,EditUser,EditDate,IsLogin) 
+            Add =@"INSERT INTO SystemUser(LoginName,Password,LastLoginDate,CreateUser,CreateDate,EditUser,EditDate,IsLogin) 
                 VALUES(@LoginName,@Password,@LastLoginDate,@CreateUser,@CreateDate,@EditUser,@EditDate,@IsLogin );",
             Update =
-                @"UPDATE SystemUser SET LoginName = @LoginName,Password=@Password,LastLoginDate=@LastLoginDate,"
-                + "CreateUser = @CreateUser , CreateDate = @CreateDate , EditUser = @EditUser , EditDate = @EditDate , IsLogin = @IsLogin WHERE Id=@Id ;",
+                @"UPDATE SystemUser SET LoginName = @LoginName,Password=@Password,LastLoginDate=@LastLoginDate,
+                CreateUser = @CreateUser,CreateDate = @CreateDate,EditUser = @EditUser,EditDate = @EditDate,IsLogin = @IsLogin WHERE Id=@Id ;",
             Delete = @"DELETE FROM SystemUser WHERE Id = @Id ;",
             QueryAll = @"SELECT * FROM SystemUser; ",
             QueryOne = @"SELECT * FROM SystemUser WHERE Id = @Id ;",
-            QueryByPage =""
+            QueryByPage = @"SELECT * FROM ( SELECT ROW_NUMBER() OVER ( ORDER BY Id desc) AS RowNum, * FROM SystemUser)
+                          AS RowConstrainedResult WHERE RowNum >= @StartNumber AND RowNum <= @EndNumber;
+                          SELECT COUNT(1) FROM SystemUser;"
         };
 
         public SystemUserRepository(ISqlDatabaseProxy databaseProxy)

@@ -1,7 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using JqD.Command.SystemManage;
 using JqD.Common.ILogic;
 using JqD.Common.Web;
+using JqD.Infrustruct;
+using JqueryDapper.ViewModels.SystemManage;
 
 namespace JqueryDapper.Controllers.SystemManage
 {
@@ -15,9 +18,22 @@ namespace JqueryDapper.Controllers.SystemManage
             _systemUserLogic = systemUserLogic;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int pageNo = 1)
         {
-            return View("~/Views/SystemManage/SystemUser.cshtml");
+            var startNo = (pageNo - 1) * Pagination.PageNumber + 1;
+            int totleCount;
+            var list = _systemUserLogic.QueryByPage(startNo, pageNo * Pagination.PageNumber, out totleCount);
+            var model = new SystemUsersPageViewModel
+            {
+                SystemUsers = list.Select(x => new SystemUserViewModel
+                {
+                    Id = x.Id,
+                    LoginName = x.LoginName,
+                    Password = x.Password
+                }).ToList(),
+                Pagination = new Pagination(startNo, Pagination.PageNumber, totleCount),
+            };
+            return View("~/Views/SystemManage/SystemUser.cshtml", model);
         }
 
         [HttpPost]

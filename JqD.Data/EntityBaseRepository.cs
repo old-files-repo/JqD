@@ -121,22 +121,60 @@ namespace JqD.Data
             }
         }
 
+        public IEnumerable<T> QueryByPage(int startNumber, int endNumber, out int totleRecords)
+        {
+            try
+            {
+                var items = new List<T>();
+                var number = 0;
+                DatabaseProxy.QueryMulti(Sql.QueryByPage, new { StartNumber = startNumber, EndNumber = endNumber },
+                    reader =>
+                    {
+                        items = reader.Read<T>().ToList();
+                        number = reader.Read<int>().Single();
+                        return true;
+
+                    });
+                totleRecords = number;
+                return items;
+            }
+            catch (SqlException sqlException)
+            {
+                throw RepositoryException.DatabaseError(sqlException);
+            }
+            catch (Exception exception)
+            {
+                throw RepositoryException.GeneralError(exception);
+            }
+        }
+
         public IEnumerable<T> QueryByPage(int startNumber, int endNumber, 
             out int totleRecords, Dictionary<string, object> querys)
         {
-            var items = new List<T>();
-            var number = 0;
-            var sqlBuild = QueryByPageSql.Invoke(Sql.QueryByPage, querys);
-            var parameters = sqlBuild.Parameters;
-            parameters.AddDynamicParams(new { StartNumber = startNumber, EndNumber = endNumber });
-            DatabaseProxy.QueryMulti(sqlBuild.RawSql, parameters, reader =>
+            try
             {
-                items = reader.Read<T>().ToList();
-                number = reader.Read<int>().Single();
-                return true;
-            });
-            totleRecords = number;
-            return items;
+                var items = new List<T>();
+                var number = 0;
+                var sqlBuild = QueryByPageSql.Invoke(Sql.QueryByPage, querys);
+                var parameters = sqlBuild.Parameters;
+                parameters.AddDynamicParams(new { StartNumber = startNumber, EndNumber = endNumber });
+                DatabaseProxy.QueryMulti(sqlBuild.RawSql, parameters, reader =>
+                {
+                    items = reader.Read<T>().ToList();
+                    number = reader.Read<int>().Single();
+                    return true;
+                });
+                totleRecords = number;
+                return items;
+            }
+            catch (SqlException sqlException)
+            {
+                throw RepositoryException.DatabaseError(sqlException);
+            }
+            catch (Exception exception)
+            {
+                throw RepositoryException.GeneralError(exception);
+            }
         }
     }
 }

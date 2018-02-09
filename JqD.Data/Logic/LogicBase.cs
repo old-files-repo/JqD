@@ -42,5 +42,10 @@ namespace JqD.Data.Logic
         {
             return _registerApplyRepository.GetAll();
         }
+
+        public IEnumerable<T> QueryByPage(int startNumber, int endNumber, out int totleRecords)
+        {
+            return _registerApplyRepository.QueryByPage(startNumber, endNumber, out totleRecords);
+        }
     }
 }

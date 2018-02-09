@@ -4,8 +4,7 @@
         $("#newModal").modal("show");
     });
 
-    $("#saveNew").on("click", function () {
-        //if (!$("#addForm").valid()) return;
+    $("#saveNew").off("click").on("click", function () {
         var datas = form2js($("#addForm").get(0), ".", true);
         $.ajax({
             url: "/SystemUser/Add",
