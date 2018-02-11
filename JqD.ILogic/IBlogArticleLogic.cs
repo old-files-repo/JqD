@@ -3,7 +3,7 @@ using JqD.Entities;
 
 namespace JqD.ILogic
 {
-    public interface IUserInfoLogic : ILogicBase<UserInfo>
+    public interface IBlogArticleLogic : ILogicBase<BlogArticle>
     {
     }
 }

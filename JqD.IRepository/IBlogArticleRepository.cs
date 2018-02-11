@@ -3,8 +3,8 @@ using JqD.Entities;
 
 namespace JqD.IRepository
 {
-    public interface IUserInfoRepository: IRepositoryBase<UserInfo>
+    public interface IBlogArticleRepository:IRepositoryBase<BlogArticle>
     {
-
+        
     }
 }

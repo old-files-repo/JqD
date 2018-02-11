@@ -5,3 +5,7 @@
 .float_right {
     text-align:right
 }
+
+.auto_widthPercert30 {
+    width: 30%
+}

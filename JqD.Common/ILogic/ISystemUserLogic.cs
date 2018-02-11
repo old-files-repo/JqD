@@ -7,7 +7,9 @@ namespace JqD.Common.ILogic
 {
     public interface ISystemUserLogic : ILogicBase<SystemUser>
     {
-        void Insert(AddUserCommand user);
+        void Add(AddUserCommand user);
+
+        void Update(EditUserCommand user);
 
         LoginUserInformation Login(string userName, string password);
 

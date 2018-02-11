@@ -27,7 +27,7 @@ namespace JqD.Common.Logic
             _currentTimeProvider = currentTimeProvider;
         }
 
-        public void Insert(AddUserCommand user)
+        public void Add(AddUserCommand user)
         {
             if (string.IsNullOrEmpty(user.LoginName) || string.IsNullOrEmpty(user.Password))
             {
@@ -54,6 +54,27 @@ namespace JqD.Common.Logic
                 CreateDate= _currentTimeProvider.CurrentTime()
             };
             _systemUserRepository.Add(info);
+        }
+
+        public void Update(EditUserCommand user)
+        {
+            if (string.IsNullOrEmpty(user.Password))
+            {
+                throw new LogException(LogicExceptionMessage.LoginNameOrPasswordIsNull);
+            }
+            if (!IsNumAndEnCh(user.Password))
+            {
+                throw new LogException(LogicExceptionMessage.LoginNameOrPasswordIsAlphabet);
+            }
+            if (!IsLengthMoreThanSix(user.Password))
+            {
+                throw new LogException(LogicExceptionMessage.LoginNameOrPasswordLengthMoreThanSix);
+            }
+            var info = _systemUserRepository.Get(user.Id);
+            info.Password = user.Password;
+            info.EditUser = LoginUserSection.CurrentUser.LoginName;
+            info.EditDate = _currentTimeProvider.CurrentTime();
+            _systemUserRepository.Update(info);
         }
 
         private static bool IsNumAndEnCh(string input)
@@ -85,7 +106,7 @@ namespace JqD.Common.Logic
                 throw new Exception("登陆密码错误");
             }
             systemUser.LastLoginDate =_currentTimeProvider.CurrentTime();
-            systemUser.IsLogin = UserEnum.IsLogin.Logining;
+            systemUser.IsLogin = Enums.IsLogin.Logining;
             _systemUserRepository.Update(systemUser);
             var loginUserInfo = new LoginUserInformation
             {

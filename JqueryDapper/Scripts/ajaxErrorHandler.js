@@ -3,8 +3,7 @@
         cache: false,
         error: function (xhr) {
             if (xhr) {
-                ErrorTip.confirm({ message: jQuery.parseJSON(xhr.responseText).Message })
-                    .on(function () { });
+                Ewin.alert({ message: jQuery.parseJSON(xhr.responseText).Message });
             }
         }
     });

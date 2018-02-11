@@ -14,7 +14,7 @@
             <h1>Custom <strong>Login Form</strong> Styling</h1>
             <h2>Creative and modern form design with CSS magic</h2>
             <div class="support-note">
-                <span class="note-ie">Sorry, only modern browsers.</span>
+                <span class="">Sorry, only modern browsers.</span>
             </div>
         </header>
         <section class="main">
@@ -46,9 +46,13 @@
 <link href="~/Content/Common/style.css" type="text/css" rel="stylesheet" />
 <link href="~/Content/Common/demo.css" type="text/css" rel="stylesheet" />
 <link href="~/Content/Common/Login.css" type="text/css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" type="text/css" rel="stylesheet" />
+<link href="~/Content/App/AutoStyle.css" type="text/css" rel="stylesheet" />
 <script src="~/Scripts/jquery-1.12.4.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/js.cookie-2.1.4.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/ajaxErrorHandler.js"></script>
+<script src="~/Scripts/Style/script.js"></script>
 <script>
     $(document).ready(function () {
         //若存在Cookie，显示用户名
@@ -97,4 +101,13 @@
             }
         }
     }
+
+    $.ajaxSetup({
+        cache: false,
+        error: function (xhr) {
+            if (xhr) {
+                Ewin.alert({ message: jQuery.parseJSON(xhr.responseText).Message });
+            }
+        }
+    });
 </script>

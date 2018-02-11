@@ -32,7 +32,7 @@
                         <tbody class="float_left">
                         @foreach (var item in Model.SystemUsers)
                         {
-                            <tr data-operateid="@item.Id">
+                            <tr>
                                 <td data-name="LoginName">@item.LoginName</td>
                                 <td data-name="Password">@item.Password</td>
                                 <td>
@@ -76,10 +76,11 @@
     </div>
 </div>
 
-<!-- 模态框（Modal）New -->
+<!-- 模态框（Modal）-->
 <div class="modal fade" id="newModal" tabindex="-1" role="dialog"
      aria-labelledby="newModalLabel" aria-hidden="true">
     <form id="addForm">
+        <input hidden name="Id"/>
         <div class="modal-dialog">
             <div class="modal-content col-md-6">
                 <div class="modal-header">
@@ -93,7 +94,7 @@
                     <div class="col-md-12">
                         <div class="text-left">
                             <label>账户:</label>
-                            <input type="text" class="form-control" name="LoginName">
+                            <input type="text" class="form-control" id="addLoginName" name="LoginName">
                         </div>
                         <div class="text-left">
                             <label>密码:</label>
@@ -103,6 +104,7 @@
                 </div>
                 <div class="col-md-12 modal-footer">
                     <button type="button" class="btn btn-default" id="saveNew">保存</button>
+                    <button type="button" class="btn btn-default" id="saveUpdate">保存</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 </div>
             </div>

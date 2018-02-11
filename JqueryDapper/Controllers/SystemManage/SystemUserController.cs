@@ -39,8 +39,29 @@ namespace JqueryDapper.Controllers.SystemManage
         [HttpPost]
         public ActionResult Add(AddUserCommand user)
         {
-            _systemUserLogic.Insert(user);
+            _systemUserLogic.Add(user);
             return Json(new { Success = true });
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            _systemUserLogic.Delete(id);
+            return Json(new { Success = true });
+        }
+
+        [HttpPost]
+        public ActionResult Update(EditUserCommand user)
+        {
+            _systemUserLogic.Update(user);
+            return Json(new { Success = true });
+        }
+
+        [HttpPost]
+        public ActionResult Get(int id)
+        {
+            var result=_systemUserLogic.Get(id);
+            return Json(result);
         }
     }
 }

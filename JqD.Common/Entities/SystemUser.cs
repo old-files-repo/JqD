@@ -44,6 +44,6 @@ namespace JqD.Common.Entities
         /// <summary>
         /// 判断用户是否登录，1=登录，0=未登录
         /// </summary>
-        public UserEnum.IsLogin IsLogin { get; set; }
+        public Enums.IsLogin IsLogin { get; set; }
     }
 }

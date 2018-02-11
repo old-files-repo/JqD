@@ -36,7 +36,7 @@ namespace JqueryDapper
                 "~/Scripts/Style/html5.js",
                 "~/Scripts/Style/mediaqueries.js",
                 "~/Scripts/Style/owlcarousel.js",
-                "~/Scripts/Style/script.js",
+                "~/Scripts/Style/menu.js",
                 "~/Scripts/js2form.js",
                 "~/Scripts/form2js.js",
                 "~/Scripts/ajaxErrorHandler.js"
