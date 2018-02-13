@@ -9,3 +9,27 @@
 .auto_widthPercert30 {
     width: 30%
 }
+
+.auto_widthPercert100 {
+    width: 100%
+}
+
+.auto_width1200 {
+    width: 1200px
+}
+
+.auto_heightPercert15{
+    height: 15%
+}
+
+.auto_heightPercert75{
+    height: 75%
+}
+
+.auto_height550 {
+    height: 550px
+}
+
+.overflow_y {
+    overflow-y: hidden
+}

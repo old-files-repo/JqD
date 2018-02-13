@@ -1,4 +1,4 @@
-﻿using JqD.Command.SystemManage;
+﻿using JqD.Common.Command.SystemManage;
 using JqD.Common.Entities;
 using JqD.Common.Models;
 using JqD.Data.Logic;
@@ -9,7 +9,7 @@ namespace JqD.Common.ILogic
     {
         void Add(AddUserCommand user);
 
-        void Update(EditUserCommand user);
+        void Update(UpdateUserCommand user);
 
         LoginUserInformation Login(string userName, string password);
 

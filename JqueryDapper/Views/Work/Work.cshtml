@@ -23,32 +23,30 @@
                     <!-- Table -->
                     <table class="table">
                         <thead>
-                        <tr>
-                            <th width="10%">编号</th>
-                            <th width="10%">分类</th>
-                            <th width="20%">标题</th>
-                            <th width="20%">备注</th>
-                            <th width="15%">创建人</th>
-                            <th width="15%">创建时间</th>
-                            <th width="10%">操作</th>
-                        </tr>
+                            <tr>
+                                <th width="10%">编号</th>
+                                <th width="15%">分类</th>
+                                <th width="35%">标题</th>
+                                <th width="15%">创建人</th>
+                                <th width="15%">创建时间</th>
+                                <th width="10%">操作</th>
+                            </tr>
                         </thead>
                         <tbody class="float_left">
-                        @foreach (var item in Model.Works)
-                        {
-                            <tr>
-                                <th width="10%">@item.Id</th>
-                                <td data-name="LoginName">@item.Category</td>
-                                <td data-name="Title">@item.Title</td>
-                                <td data-name="LoginName">@item.Remark</td>
-                                <td data-name="Password">@item.CreateUser</td>
-                                <td data-name="LoginName">@item.CreateDate</td>
-                                <td>
-                                    <a href="#" class="glyphicon glyphicon-pencil" data-operation="edit" data-operateid="@item.Id" title="编辑"></a>
-                                    <a href="#" class="glyphicon glyphicon-trash" data-operation="delete" data-operateid="@item.Id" title="删除"></a>
-                                </td>
-                            </tr>
-                        }
+                            @foreach (var item in Model.Works)
+                            {
+                                <tr>
+                                    <th width="10%">@item.Id</th>
+                                    <td data-name="LoginName">@item.Category</td>
+                                    <td data-name="Title">@item.Title</td>
+                                    <td data-name="Password">@item.CreateUser</td>
+                                    <td data-name="LoginName">@item.CreateDate</td>
+                                    <td>
+                                        <a href="#" class="glyphicon glyphicon-pencil" data-operation="edit" data-operateid="@item.Id" title="编辑"></a>
+                                        <a href="#" class="glyphicon glyphicon-trash" data-operation="delete" data-operateid="@item.Id" title="删除"></a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                     <div class="float_right">
@@ -67,10 +65,10 @@
                                     }
                                     else
                                     {
-                                        <li ><a data-page="@pageNum" href="@Url.Action("Index", "Work", new {pageNo = pageNum})">@pageNum</a></li>
+                                        <li><a data-page="@pageNum" href="@Url.Action("Index", "Work", new {pageNo = pageNum})">@pageNum</a></li>
                                     }
                                 }
-                                <li class="@(Model.Pagination.ShowNextPage ? "" : "disabled")" >
+                                <li class="@(Model.Pagination.ShowNextPage ? "" : "disabled")">
                                     <a href="@(Model.Pagination.ShowNextPage ?Url.Action("Index", "Work", new { pageNo = Model.Pagination.Next }) : "javascript:void(0)")" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
@@ -85,59 +83,49 @@
 </div>
 
 <!-- 模态框（Modal）-->
-<div class="modal fade" id="newModal" tabindex="-1" role="dialog"
+<div class="modal fade overflow_y" id="newModal" tabindex="-1" role="dialog"
      aria-labelledby="newModalLabel" aria-hidden="true">
     <form id="addForm">
-        <input hidden name="Id" />
-        <div class="modal-dialog">
-            <div class="wrapper wrapper-content animated fadeInUp" style="height:600px;padding-bottom:30px;overflow:auto">
-                @using (Ajax.BeginForm("Add", "BlogArticle", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterAddBlog" }, new { @class = "form-horizontal" }))
-                {
-                    <div class="form-group">
-                        <label class="col-md-1 control-label">标题&nbsp;:</label>
-                        <div class="col-md-11">
-                            <input type='text' name='btitle' id='title' value='' class='form-control' placeholder='' />
+        <input hidden name="Id"/>
+        <div class="modal-dialog auto_width1200">
+            <div class="modal-content auto_height550">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">
+                        博客后台
+                    </h4>
+                </div>
+                <div class="modal-body auto_widthPercert100 auto_heightPercert75">
+                    <div class="form-group auto_heightPercert15">
+                        <label class="col-md-1">标题&nbsp;:</label>
+                        <div class="col-md-7">
+                            <input type="text" class="form-control" id="" name="Title">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-1 control-label">类别&nbsp;:</label>
-                        <div class='col-md-2'>
-                            <select name='bcategory' id='original' class='form-control'>
-                                <option value='技术博文' selected='selected'>技术博文</option>
-                                <option value='随笔日志'>随笔日志</option>
+                        <label class="col-md-1">类别&nbsp;:</label>
+                        <div class="col-md-3">
+                            <select class="form-control" id="" name="Category">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-1 control-label">内容&nbsp;:</label>
-                        <div class='col-md-11'>
-                            <textarea id="bcontent" rows="18" name="bcontent" class='form-control'>
-                                <p>请输入内容...</p>
-                            </textarea>
+                        <label class="col-md-1">内容&nbsp;:</label>
+                        <div class="col-md-11">
+                            <div id="content"></div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-1 col-md-10">
-                            <input type='submit' id='submit' class='btn btn-info' value='保存' data-loading='稍候...' />
-                        </div>
-                    </div>
-
-                }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-success" id="saveNew">保存</button>
+                    <button type="button" class="btn btn-default btn-success" id="saveUpdate">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
             </div>
-        </div>
-    </form>
-</div>
-
-<div class="modal fade" id="newModal" tabindex="-1" role="dialog"
-     aria-labelledby="newModalLabel" aria-hidden="true">
-    <form id="addForm">
-        <div >
-           
         </div>
     </form>
 </div>
 
 @section Scripts {
     <script src="~/Scripts/App/Work/work.js"></script>
-    <script src="~/Scripts/wangEditor.js"></script>
 }

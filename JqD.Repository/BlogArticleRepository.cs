@@ -17,8 +17,8 @@ namespace JqD.Repository
             Update = @"UPDATE BlogArticle SET Title=@Title,Category=@Category,Content=@Content,
                 Remark=@Remark,CreateUser=@CreateUser,CreateDate=@CreateDate,EditUser=@EditUser,
                 EditDate=@EditDate,Status=@Status WHERE Id=@Id",
-            Delete = @"DELETE FROM BlogArticle WHERE Id=@Id",
-            QueryAll = @"SELECT * FROM BlogArticle",
+            Delete = @"",
+            QueryAll = @"SELECT * FROM BlogArticle WHERE Status=1",
             QueryOne = @"SELECT * FROM BlogArticle WHERE Id=@Id",
             QueryByPage = @"SELECT * FROM (SELECT ROW_NUMBER() OVER ( ORDER BY Id desc) AS RowNum,
                           * FROM BlogArticle WHERE Status=1)

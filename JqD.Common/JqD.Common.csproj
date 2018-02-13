@@ -95,6 +95,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\SystemManage\AddUserCommand.cs" />
+    <Compile Include="Command\SystemManage\UpdateUserCommand.cs" />
     <Compile Include="CurrentTimeProvider.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\OperationLogs.cs" />
@@ -104,6 +106,8 @@
     <Compile Include="ILogic\ISystemUserLogic.cs" />
     <Compile Include="IRepository\IOperationLogsRepository.cs" />
     <Compile Include="IRepository\ISystemUserRepository.cs" />
+    <Compile Include="Logic\LogicException.cs" />
+    <Compile Include="Logic\LogicExceptionMessage.cs" />
     <Compile Include="Logic\SystemUserLogic.cs" />
     <Compile Include="Models\LoginUserInformation.cs" />
     <Compile Include="PasswordHasher.cs" />
@@ -119,10 +123,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JqD.Command\JqD.Command.csproj">
-      <Project>{F4ED364E-2165-46A6-A9EF-284C81D20CD0}</Project>
-      <Name>JqD.Command</Name>
-    </ProjectReference>
     <ProjectReference Include="..\JqD.Data\JqD.Data.csproj">
       <Project>{6CC373CC-791A-4474-B9C8-0397D759B753}</Project>
       <Name>JqD.Data</Name>
@@ -130,10 +130,6 @@
     <ProjectReference Include="..\JqD.Infrustruct\JqD.Infrustruct.csproj">
       <Project>{AE6753A1-5DEB-426F-BFA5-A9F7CE5A73B3}</Project>
       <Name>JqD.Infrustruct</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JqD.Logic\JqD.Logic.csproj">
-      <Project>{1A975A49-783D-461D-819F-AC849AB7F0EC}</Project>
-      <Name>JqD.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

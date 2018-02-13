@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using JqD.Command.SystemManage;
+using JqD.Common.Command.SystemManage;
 using JqD.Common.ILogic;
 using JqD.Common.Web;
 using JqD.Infrustruct;
@@ -51,7 +51,7 @@ namespace JqueryDapper.Controllers.SystemManage
         }
 
         [HttpPost]
-        public ActionResult Update(EditUserCommand user)
+        public ActionResult Update(UpdateUserCommand user)
         {
             _systemUserLogic.Update(user);
             return Json(new { Success = true });

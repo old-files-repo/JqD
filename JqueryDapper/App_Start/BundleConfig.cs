@@ -30,7 +30,9 @@ namespace JqueryDapper
                 "~/Content/Style/owltheme.css",
                 "~/Content/Style/owltransitions.css",
                 "~/Content/Style/fontawesome.min.css", 
-                "~/Content/Style/zerogrid.css"));
+                "~/Content/Style/zerogrid.css",
+                "~/Content/wangEditor.css"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/LayoutJS").Include(
                 "~/Scripts/Style/html5.js",
@@ -39,7 +41,8 @@ namespace JqueryDapper
                 "~/Scripts/Style/menu.js",
                 "~/Scripts/js2form.js",
                 "~/Scripts/form2js.js",
-                "~/Scripts/ajaxErrorHandler.js"
+                "~/Scripts/ajaxErrorHandler.js",
+                "~/Scripts/wangEditor.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

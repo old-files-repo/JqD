@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using JqD.Command.Work;
 using JqD.Common.ILogic;
 using JqD.Common.Web;
 using JqD.ILogic;
@@ -40,32 +41,32 @@ namespace JqueryDapper.Controllers.Work
             return View("~/Views/Work/Work.cshtml", model);
         }
 
-        //[HttpPost]
-        //public ActionResult Add(AddUserCommand user)
-        //{
-        //    _blogArticleLogic.Add(user);
-        //    return Json(new { Success = true });
-        //}
+        [HttpPost]
+        public ActionResult Add(AddWorkCommand work)
+        {
+            _blogArticleLogic.Add(work);
+            return Json(new { Success = true });
+        }
 
-        //[HttpPost]
-        //public ActionResult Delete(int id)
-        //{
-        //    _blogArticleLogic.Delete(id);
-        //    return Json(new { Success = true });
-        //}
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            _blogArticleLogic.LogicDelete(id);
+            return Json(new { Success = true });
+        }
 
-        //[HttpPost]
-        //public ActionResult Update(EditUserCommand user)
-        //{
-        //    _blogArticleLogic.Update(user);
-        //    return Json(new { Success = true });
-        //}
+        [HttpPost]
+        public ActionResult Update(UpdateWorkCommand work)
+        {
+            _blogArticleLogic.Update(work);
+            return Json(new { Success = true });
+        }
 
-        //[HttpPost]
-        //public ActionResult Get(int id)
-        //{
-        //    var result= _blogArticleLogic.Get(id);
-        //    return Json(result);
-        //}
+        [HttpPost]
+        public ActionResult Get(int id)
+        {
+            var result = _blogArticleLogic.Get(id);
+            return Json(result);
+        }
     }
 }

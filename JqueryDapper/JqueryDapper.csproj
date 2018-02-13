@@ -163,6 +163,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\EmbeddedResourceController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\InfrustructController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SystemManage\SystemUserController.cs" />
     <Compile Include="Controllers\Work\WorkController.cs" />
@@ -192,6 +193,7 @@
     <Content Include="Content\Style\owltransitions.css" />
     <Content Include="Content\Style\style.css" />
     <Content Include="Content\Style\zerogrid.css" />
+    <Content Include="Content\wangEditor.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -265,6 +267,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\LoadImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

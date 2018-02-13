@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text.RegularExpressions;
-using JqD.Command.SystemManage;
+using JqD.Common.Command.SystemManage;
 using JqD.Common.Entities;
 using JqD.Common.ILogic;
 using JqD.Common.IRepository;
@@ -9,7 +9,6 @@ using JqD.Common.Models;
 using JqD.Data.CodeSection;
 using JqD.Data.Logic;
 using JqD.Infrustruct.Enums;
-using JqD.Logic;
 using log4net.Core;
 
 namespace JqD.Common.Logic
@@ -56,7 +55,7 @@ namespace JqD.Common.Logic
             _systemUserRepository.Add(info);
         }
 
-        public void Update(EditUserCommand user)
+        public void Update(UpdateUserCommand user)
         {
             if (string.IsNullOrEmpty(user.Password))
             {

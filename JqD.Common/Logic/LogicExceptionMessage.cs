@@ -1,4 +1,4 @@
-﻿namespace JqD.Logic
+﻿namespace JqD.Common.Logic
 {
     public static class LogicExceptionMessage
     {
