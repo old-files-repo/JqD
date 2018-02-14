@@ -1,4 +1,4 @@
-﻿//(function ($) {
+﻿//(functio ($) {
 //    $(document).ready(function () {
 //        $("#cssmenu").prepend('<div id="menu-button">Menu</div>');
 //        $("#cssmenu #menu-button").on("click", function () {
@@ -16,88 +16,96 @@
 (function ($) {
     window.Ewin = function () {
         var html = '<div id="[Id]" class="modal fade" role="dialog" aria-labelledby="modalLabel">' +
-                              '<div class="modal-dialog modal-sm auto_widthPercert30">' +
-                                  '<div class="modal-content">' +
-                                      '<div class="modal-header">' +
-                                          '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
-                                          '<h4 class="modal-title" id="modalLabel">[Title]</h4>' +
-                                      "</div>" +
-                                      '<div class="modal-body">' +
-                                      "<p>[Message]</p>" +
-                                      "</div>" +
-                                       '<div class="modal-footer">' +
-                                        '<button type="button" class="btn btn-default cancel" data-dismiss="modal">[BtnCancel]</button>' +
-                                        '<button type="button" class="btn btn-primary ok" data-dismiss="modal">[BtnOk]</button>' +
-                                    "</div>" +
-                                  "</div>" +
-                              "</div>" +
-                          "</div>";
+            '<div class="modal-dialog modal-sm auto_widthPercert30">' +
+            '<div class="modal-content">' +
+            '<div class="modal-header">' +
+            '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+            '<h4 class="modal-title" id="modalLabel">[Title]</h4>' +
+            "</div>" +
+            '<div class="modal-body">' +
+            "<p>[Message]</p>" +
+            "</div>" +
+            '<div class="modal-footer">' +
+            '<button type="button" class="btn btn-default cancel" data-dismiss="modal">[BtnCancel]</button>' +
+            '<button type="button" class="btn btn-primary ok" data-dismiss="modal">[BtnOk]</button>' +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>";
         var reg = new RegExp("\\[([^\\[\\]]*?)\\]", "igm");
-        var generateId = function () {
+        var generateId = function() {
             var date = new Date();
             return "mdl" + date.valueOf();
-        }
-        var initalert = function (options) {
-            options = $.extend({}, {
-                title: "警告信息",
-                message: "",
-                btnok: "确定",
-                btncl: "取消",
-                width: 100,
-                auto: false
-            }, options || {});
+        };
+        var initalert = function(options) {
+            options = $.extend({},
+                {
+                    title: "警告信息",
+                    message: "",
+                    btnok: "确定",
+                    btncl: "取消",
+                    width: 100,
+                    auto: false
+                },
+                options || {});
             var modalId = generateId();
-            var content = html.replace(reg, function (node, key) {
-                return {
-                    Id: modalId,
-                    Title: options.title,
-                    Message: options.message,
-                    BtnOk: options.btnok,
-                    BtnCancel: options.btncl
-                }[key];
-            });
+            var content = html.replace(reg,
+                function(node, key) {
+                    return {
+                        Id: modalId,
+                        Title: options.title,
+                        Message: options.message,
+                        BtnOk: options.btnok,
+                        BtnCancel: options.btncl
+                    }[key];
+                });
             $("body").append(content);
             $("#" + modalId).modal({
                 width: options.width,
                 backdrop: "static"
             });
-            $("#" + modalId).on("hide.bs.modal", function (e) {
-                $("body").find("#" + modalId).remove();
-            });
+            $("#" + modalId).on("hide.bs.modal",
+                function(e) {
+                    $("body").find("#" + modalId).remove();
+                });
             return modalId;
-        }
-        var initconfirm = function (options) {
-            options = $.extend({}, {
-                title: "提示信息",
-                message: "",
-                btnok: "确定",
-                btncl: "取消",
-                width: 100,
-                auto: false
-            }, options || {});
+        };
+        var initconfirm = function(options) {
+            options = $.extend({},
+                {
+                    title: "提示信息",
+                    message: "",
+                    btnok: "确定",
+                    btncl: "取消",
+                    width: 100,
+                    auto: false
+                },
+                options || {});
             var modalId = generateId();
-            var content = html.replace(reg, function (node, key) {
-                return {
-                    Id: modalId,
-                    Title: options.title,
-                    Message: options.message,
-                    BtnOk: options.btnok,
-                    BtnCancel: options.btncl
-                }[key];
-            });
+            var content = html.replace(reg,
+                function(node, key) {
+                    return {
+                        Id: modalId,
+                        Title: options.title,
+                        Message: options.message,
+                        BtnOk: options.btnok,
+                        BtnCancel: options.btncl
+                    }[key];
+                });
             $("body").append(content);
             $("#" + modalId).modal({
                 width: options.width,
                 backdrop: "static"
             });
-            $("#" + modalId).on("hide.bs.modal", function (e) {
-                $("body").find("#" + modalId).remove();
-            });
+            $("#" + modalId).on("hide.bs.modal",
+                function(e) {
+                    $("body").find("#" + modalId).remove();
+                });
             return modalId;
-        }
+        };
         return {
             alert: function (options) {
-                if (typeof options == "string") {
+                if (typeof options === "string") {
                     options = {
                         message: options
                     };
@@ -144,10 +152,33 @@
                             modal.on("hide.bs.modal", function (e) {
                                 callback(e);
                             });
-                        }
+                        };
                     }
                 };
             }
         }
     }();
 })(jQuery);
+
+var CategoryType = [
+    { type: 1, name:"生活随笔"},
+    { type: 2, name: "Web前段" },
+    { type: 3, name: ".Net技术" },
+    { type: 4, name: "数据库技术" },
+    { type: 5, name: "其他随笔" }
+];
+
+function GetCategoryName(category) {
+    switch (category) {
+        case 1:
+            return "生活随笔";
+        case 2:
+            return "Web前段";
+        case 3:
+            return ".Net技术";
+        case 4:
+            return "数据库技术";
+        default:
+            return "其他随笔";
+    }
+}
