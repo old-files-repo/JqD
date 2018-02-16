@@ -160,6 +160,7 @@
     }();
 })(jQuery);
 
+<<<<<<< HEAD
 var CategoryGroup;
 
 GetCategory();
@@ -172,4 +173,27 @@ function GetCategory() {
     }).done(function (result) {
         CategoryGroup = result;
     });
+=======
+var CategoryType = [
+    { type: 1, name:"生活随笔"},
+    { type: 2, name: "Web前段" },
+    { type: 3, name: ".Net技术" },
+    { type: 4, name: "数据库技术" },
+    { type: 5, name: "其他随笔" }
+];
+
+function GetCategoryName(category) {
+    switch (category) {
+        case 1:
+            return "生活随笔";
+        case 2:
+            return "Web前段";
+        case 3:
+            return ".Net技术";
+        case 4:
+            return "数据库技术";
+        default:
+            return "其他随笔";
+    }
+>>>>>>> develop
 }

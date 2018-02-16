@@ -93,8 +93,8 @@ namespace JqD.Common.Logic
             SystemUser systemUser;
             try
             {
-                systemUser =_systemUserRepository.GetAll()
-                    .Single(x=>x.LoginName== userName);
+                var systemUserGroup = _systemUserRepository.GetAll();
+                systemUser = systemUserGroup.Single(x=>x.LoginName== userName);
             }
             catch
             {
