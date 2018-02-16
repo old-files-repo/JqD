@@ -1,4 +1,5 @@
-﻿@{
+﻿@model JqueryDapper.ViewModels.HomePageViewModel
+@{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -78,6 +79,29 @@
 </div>
 <div id="container">
     <div class="wrap-container">
+        @foreach (var item in Model.Homes)
+        {
+            <article class="post zerogrid">
+                <div class="row wrap-post">
+                    <!--Start Box-->
+                    <div class="entry-header">
+                        <span class="time">@item.CreateDate</span>
+                        <h2 class="entry-title"><a href="javascript:void(0)">@item.Title</a></h2>
+                        <span class="cat-links"><a href="javascript:void(0)">@item.Category</a></span>
+                    </div>
+                    <div class="post-thumbnail-wrap">
+                        @if (item.ImagePathStatus)
+                        {
+                            <img src=@item.ImagePath alt="" style="height: 570px; width: 940px">
+                        }
+                    </div>
+                    <div class="entry-content">
+                        @*<p>@item.Content</p>*@
+                        <a href="javascript:void(0)">More Details</a>
+                    </div>
+                </div>
+            </article>
+        }
         <!-----------------Content-Box-------------------->
         <article class="post zerogrid">
             <div class="row wrap-post">
@@ -92,7 +116,7 @@
                 </div>
                 <div class="entry-content">
                     <p>Tenent mordicus. Et nemo nimium beatus est; Quorum altera prosunt, nocent altera. Sequitur disserendi ratio cognitioque naturae; Quod si ita se habeat, non possit beatam praestare vitam sapientia. Quamvis enim depravatae non sint, pravae tamen esse possunt. Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Scientiam pollicentur, quam non erat mirum sapientiae cupido patria esse cariorem. Pudebit te, inquam, illius tabulae, quam Cleanthes sane commode verbis depingere solebat. Ex eorum enim scriptis et institutis cum omnis doctrina liberalis, omnis historia. Duo Reges: constructio interrete….</p>
-                    <a href="single.html">More Details</a>
+                    <a href="#">More Details</a>
                 </div>
             </div>
         </article>
@@ -110,7 +134,7 @@
                 </div>
                 <div class="entry-content">
                     <p>Tenent mordicus. Et nemo nimium beatus est; Quorum altera prosunt, nocent altera. Sequitur disserendi ratio cognitioque naturae; Quod si ita se habeat, non possit beatam praestare vitam sapientia. Quamvis enim depravatae non sint, pravae tamen esse possunt. Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Scientiam pollicentur, quam non erat mirum sapientiae cupido patria esse cariorem. Pudebit te, inquam, illius tabulae, quam Cleanthes sane commode verbis depingere solebat. Ex eorum enim scriptis et institutis cum omnis doctrina liberalis, omnis historia. Duo Reges: constructio interrete….</p>
-                    <a href="single.html">More Details</a>
+                    <a href="#">More Details</a>
                 </div>
             </div>
         </article>
@@ -128,11 +152,10 @@
                 </div>
                 <div class="entry-content">
                     <p>Tenent mordicus. Et nemo nimium beatus est; Quorum altera prosunt, nocent altera. Sequitur disserendi ratio cognitioque naturae; Quod si ita se habeat, non possit beatam praestare vitam sapientia. Quamvis enim depravatae non sint, pravae tamen esse possunt. Nec vero alia sunt quaerenda contra Carneadeam illam sententiam. Scientiam pollicentur, quam non erat mirum sapientiae cupido patria esse cariorem. Pudebit te, inquam, illius tabulae, quam Cleanthes sane commode verbis depingere solebat. Ex eorum enim scriptis et institutis cum omnis doctrina liberalis, omnis historia. Duo Reges: constructio interrete….</p>
-                    <a href="single.html">More Details</a>
+                    <a href="#">More Details</a>
                 </div>
             </div>
         </article>
-
     </div>
 </div>
 

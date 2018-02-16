@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using JqD.Infrustruct.Enums;
+using JqueryDapper.ViewModels;
 
 namespace JqueryDapper.Controllers
 {
@@ -13,7 +15,7 @@ namespace JqueryDapper.Controllers
             var urlList = new List<string>();
             if (files.Count <= 0)
             {
-                return Json(new { errno = 1, data= urlList });
+                return Json(new { errno = 1, data = urlList });
             }
             var file = files[0];
             var path = Server.MapPath("~/images/LoadImages/"); //存储图片的文件夹
@@ -32,6 +34,22 @@ namespace JqueryDapper.Controllers
             var imgUrl = "/images/LoadImages/" + currentFileName;
             urlList.Add(imgUrl);
             return Json(new { errno = 0, data = urlList });
+        }
+
+        [HttpPost]
+        public JsonResult GetCategory()
+        {
+            var list = new List<EnumViewModel>();
+            foreach (var value in Enum.GetValues(typeof(Enums.Category)))
+            {
+                var s = new EnumViewModel
+                {
+                    EnumString = value.ToString(),
+                    Id = Convert.ToInt32(value)
+                };
+                list.Add(s);
+            }
+            return Json(list);
         }
     }
 }

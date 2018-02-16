@@ -151,3 +151,17 @@
         }
     }();
 })(jQuery);
+
+var CategoryGroup;
+
+GetCategory();
+
+function GetCategory() {
+    $.ajax({
+        url: "/Infrustruct/GetCategory",
+        method: "POST",
+        async: false
+    }).done(function (result) {
+        CategoryGroup = result;
+    });
+}
