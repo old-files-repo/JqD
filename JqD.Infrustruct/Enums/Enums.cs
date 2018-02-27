@@ -16,7 +16,11 @@
         /// </summary>
         public enum Category
         {
-            
+            生活随笔=1,
+            Net技术=2,
+            Web前段=3,
+            数据库技术=4,
+            其他随笔=5
         }
 
         /// <summary>

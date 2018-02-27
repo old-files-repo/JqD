@@ -2,35 +2,7 @@
 
     var Edit = window.wangEditor;
     var editor = new Edit("#content");
-    editor.customConfig.menus = [
-        "head", // 标题
-        "bold", // 粗体
-        "italic", // 斜体
-        "underline", // 下划线
-        "strikeThrough", // 删除线
-        "foreColor", // 文字颜色
-        "backColor", // 背景颜色
-        "link", // 插入链接
-        "list", // 列表
-        "justify", // 对齐方式
-        "quote", // 引用
-        "emoticon", // 表情
-        "image", // 插入图片
-        "table", // 表格
-        //"video",  // 插入视频
-        "code", // 插入代码
-        "undo", // 撤销
-        "redo" // 重复
-    ];
-    editor.customConfig.uploadImgServer = "/Infrustruct/AddImages";
-    // 将图片大小限制为 5M
-    editor.customConfig.uploadImgMaxSize = 5 * 1024 * 1024;
-    // 限制一次最多上传 1 张图片
-    editor.customConfig.uploadImgMaxLength = 1;
-    // 隐藏“网络图片”tab
-    editor.customConfig.showLinkImg = false;
-    editor.customConfig.debug = true;
-    editor.create();
+    initializeDate();
 
     $("#add").off().on("click", function () {
         $("#newModal").modal("show");
@@ -59,7 +31,7 @@
     $("a[data-operation='delete']").off().on("click", function () {
         var $this = $(this);
         var operateid = $this.attr("data-operateid");
-        Ewin.confirm({ message: "deleted" }).on(function (e) {
+        window.Ewin.confirm({ message: "deleted" }).on(function (e) {
             if (!e) {
                 return;
             } else {
@@ -116,4 +88,40 @@
             }
         });
     });
+
+    function initializeDate() {
+        editor.customConfig.menus = [
+            "head", // 标题
+            "bold", // 粗体
+            "italic", // 斜体
+            "underline", // 下划线
+            "strikeThrough", // 删除线
+            "foreColor", // 文字颜色
+            "backColor", // 背景颜色
+            "link", // 插入链接
+            "list", // 列表
+            "justify", // 对齐方式
+            "quote", // 引用
+            "emoticon", // 表情
+            "image", // 插入图片
+            "table", // 表格
+            //"video",  // 插入视频
+            "code", // 插入代码
+            "undo", // 撤销
+            "redo" // 重复
+        ];
+        editor.customConfig.uploadImgServer = "/Infrustruct/AddImages";
+        // 将图片大小限制为 5M
+        editor.customConfig.uploadImgMaxSize = 5 * 1024 * 1024;
+        // 限制一次最多上传 1 张图片
+        editor.customConfig.uploadImgMaxLength = 1;
+        // 隐藏“网络图片”tab
+        editor.customConfig.showLinkImg = false;
+        editor.customConfig.debug = true;
+        editor.create();
+
+        for (var i = 0; i < window.CategoryGroup.length; i++) {
+            $(`<option value='${window.CategoryGroup[i].Id}'>${window.CategoryGroup[i].EnumString}</option>`).appendTo($("#addCategory"));
+        }
+    }
 });
