@@ -15,15 +15,15 @@
                         <li><a href="@Url.Action("Index", "Work")"><span>Work</span></a></li>
                     </ul>
                 </li>
-                <li class="has-sub">
-                    <a><span>Life</span></a>
-                    <ul>
-                        <li><a href="javascript:void(0)"><span>Life</span></a></li>
-                    </ul>
-                </li>
             </ul>
         </li>
-        <li class="SystemUser"><a href="@Url.Action("Index", "SystemUser")"><span>System</span></a></li>
+        <li class="has-sub System">
+            <a href="javascript:void(0)"><span>System</span></a>
+            <ul>
+                <li><a href="@Url.Action("Index", "SystemUser")"><span>SystemUser</span></a></li>
+                <li><a href="@Url.Action("LogOut", "Authentication")"><span>LogOut</span></a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 <header>
@@ -37,7 +37,7 @@
         requestUrl = "Home";
     }
     else if (requestUrl.indexOf("SystemUser")>-1) {
-        requestUrl = "SystemUser";
+        requestUrl = "System";
     }
     else {
         requestUrl = "Blog";

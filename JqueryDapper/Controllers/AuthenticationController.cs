@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using JqD.Common.ILogic;
@@ -32,6 +33,31 @@ namespace JqueryDapper.Controllers
             var loginUser = _systemUserLogic.Login(command.UserName, command.Password);
             FormsAuthenticateUser(loginUser.SystemUserId + "_" + Guid.NewGuid());
             return Json(new { Success = true });
+        }
+
+        public ActionResult LogOut(string returnUrl)
+        {
+            //if (Request.Url != null)
+            //{
+            //    var aCookie = new HttpCookie("JqDLastVisit")
+            //    {
+            //        Path = "/",
+            //        Value = Request.Url.ToString(),
+            //        Expires = DateTime.Now.AddDays(1),
+            //        Domain = ApplicationDomain,
+            //        HttpOnly = false
+            //    };
+            //    Response.Cookies.Add(aCookie);
+            //}
+            FormsAuthentication.SignOut();
+            var myCookie = new HttpCookie(FormsAuthentication.FormsCookieName)
+            {
+                Domain = ApplicationDomain,
+                Expires = DateTime.Now.ToUniversalTime().AddDays(-1d)
+            };
+            Response.Cookies.Add(myCookie);
+            _systemUserLogic.LogOut(LoginUser.LoginName);
+            return Redirect(JqD.Common.Helper.UrlHelper.WebUrl());
         }
 
         private void FormsAuthenticateUser(string userId)

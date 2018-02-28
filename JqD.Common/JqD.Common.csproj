@@ -102,6 +102,7 @@
     <Compile Include="Entities\OperationLogs.cs" />
     <Compile Include="Entities\SystemUser.cs" />
     <Compile Include="Helper\LogHelper.cs" />
+    <Compile Include="Helper\UrlHelper.cs" />
     <Compile Include="ICurrentTimeProvider.cs" />
     <Compile Include="ILogic\ISystemUserLogic.cs" />
     <Compile Include="IRepository\IOperationLogsRepository.cs" />
