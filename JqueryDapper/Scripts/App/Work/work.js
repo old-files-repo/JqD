@@ -4,12 +4,6 @@
     var editor = new Edit("#content");
     initializeDate();
 
-    var optionstring = "";
-    for (var item in window.CategoryType) {
-        optionstring += "<option value=\"" + item.type + "\" >" + item.name + "</option>";
-    }
-    $("#addCategory").html(optionstring);
-
     $("#add").off().on("click", function () {
         $("#newModal").modal("show");
         $("#saveNew").show();

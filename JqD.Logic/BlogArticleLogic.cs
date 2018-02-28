@@ -3,11 +3,11 @@ using JqD.Common;
 using JqD.Common.Logic;
 using JqD.Data.CodeSection;
 using JqD.Data.Logic;
+using JqD.Data.UnitOfWork;
 using JqD.Entities;
 using JqD.ILogic;
 using JqD.Infrustruct.Enums;
 using JqD.IRepository;
-using log4net.Core;
 
 namespace JqD.Logic
 {
@@ -15,20 +15,23 @@ namespace JqD.Logic
     {
         private readonly IBlogArticleRepository _articleRepository;
         private readonly ICurrentTimeProvider _currentTimeProvider;
+        private readonly IUnitOfWorkFactory _unitOfWorkFactory;
 
         public BlogArticleLogic(IBlogArticleRepository articleRepository,
-            ICurrentTimeProvider currentTimeProvider) 
+            ICurrentTimeProvider currentTimeProvider, 
+            IUnitOfWorkFactory unitOfWorkFactory) 
             :base(articleRepository)
         {
             _articleRepository = articleRepository;
             _currentTimeProvider = currentTimeProvider;
+            _unitOfWorkFactory = unitOfWorkFactory;
         }
 
         public void Add(AddWorkCommand work)
         {
             if (string.IsNullOrEmpty(work.Title) || string.IsNullOrEmpty(work.Content))
             {
-                throw new LogException(LogicExceptionMessage.LoginNameOrPasswordIsNull);
+                throw new LogicException(LogicExceptionMessage.LoginNameOrPasswordIsNull);
             }
             var info = new BlogArticle
             {
@@ -44,18 +47,22 @@ namespace JqD.Logic
 
         public void LogicDelete(int id)
         {
-            var info = _articleRepository.Get(id);
-            info.Status = Enums.Status.Delete;
-            info.EditUser = LoginUserSection.CurrentUser.LoginName;
-            info.EditDate = _currentTimeProvider.CurrentTime();
-            _articleRepository.Update(info);
+            using (var unitOfWork= _unitOfWorkFactory.GetCurrentUnitOfWork())
+            {
+                var info = _articleRepository.Get(id);
+                info.Status = Enums.Status.Delete;
+                info.EditUser = LoginUserSection.CurrentUser.LoginName;
+                info.EditDate = _currentTimeProvider.CurrentTime();
+                _articleRepository.Update(info);
+                unitOfWork.Commit();
+            }
         }
 
         public void Update(UpdateWorkCommand work)
         {
             if (string.IsNullOrEmpty(work.Title) || string.IsNullOrEmpty(work.Content))
             {
-                throw new LogException(LogicExceptionMessage.LoginNameOrPasswordIsNull);
+                throw new LogicException(LogicExceptionMessage.LoginNameOrPasswordIsNull);
             }
             var info = _articleRepository.Get(work.Id);
             info.Title = work.Title;

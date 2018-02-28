@@ -19,7 +19,7 @@ namespace JqueryDapper.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var allArticleList = _blogArticleLogic.GetAll().ToList();
+            var allArticleList = _blogArticleLogic.GetAll().OrderByDescending(x=>x.CreateDate).ToList();
             var model = new HomePageViewModel
             {
                 Homes = allArticleList.Select(x => new HomeViewModel

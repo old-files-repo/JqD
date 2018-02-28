@@ -5,6 +5,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using JqD.Data.Logic;
 using JqD.Data.Repository;
+using JqD.Data.UnitOfWork;
 
 namespace JqD.Data.WindsorInstaller
 {
@@ -19,6 +20,8 @@ namespace JqD.Data.WindsorInstaller
                 //DbConnection类实现了IDbConnection这个接口
                 Component.For<IDbConnection>().ImplementedBy<SqlConnection>().LifestyleTransient(),
                 Component.For<ISqlDatabaseProxy>().ImplementedBy<SqlDatabaseProxy>(),
+                Component.For<IUnitOfWorkFactory>().ImplementedBy<UnitOfWorkFactory>(),
+                Component.For<IUnitOfWork>().ImplementedBy<TransactionScopeUnitOfWork>().LifestyleTransient(),
                 Component.For(typeof(IRepositoryBase<>)).ImplementedBy(typeof(RepositoryBase<>)),
                 Component.For(typeof(ILogicBase<>)).ImplementedBy(typeof(LogicBase<>))
             );

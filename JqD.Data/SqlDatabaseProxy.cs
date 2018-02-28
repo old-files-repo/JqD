@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
+using JqD.Data.CodeSection;
+using JqD.Data.ShareModels;
+using Newtonsoft.Json;
 
 namespace JqD.Data
 {
-    public class SqlDatabaseProxy: ISqlDatabaseProxy
+    internal class SqlDatabaseProxy: ISqlDatabaseProxy
     {
+        private const string AddOperationLogs = @"INSERT INTO OperationLogs (Operation,OperatorId,ModelType,ModelId,ModelJson,OperationTime,OperationSQL)
+                                             VALUES (@Operation,@OperatorId,@ModelType,@ModelId,@ModelJson,@OperationTime,@OperationSQL)";
+
         private readonly IDbConnectionFactory _dbConnectionFactory;
 
         public SqlDatabaseProxy(IDbConnectionFactory dbConnectionFactory)
@@ -20,6 +26,7 @@ namespace JqD.Data
             using (var connection = CreateConnection())
             {
                 var newId = connection.Query<int>(sql + ";SELECT CAST(SCOPE_IDENTITY() as int)", item).Single();
+                InsertOperationLog(sql, "添加", item);
                 return newId;
             }
         }
@@ -28,7 +35,9 @@ namespace JqD.Data
         {
             using (var connection = CreateConnection())
             {
-                return connection.Execute(sql, items);
+                var count=connection.Execute(sql, items);
+                InsertOperationLog(sql, "批量添加", items);
+                return count;
             }
         }
 
@@ -37,6 +46,7 @@ namespace JqD.Data
             using (var connection = CreateConnection())
             {
                 var result = connection.Execute(sql, new { Id = id });
+                InsertOperationLog(sql, "删除", id);
                 return result;
             }
         }
@@ -46,6 +56,7 @@ namespace JqD.Data
             using (var connection = CreateConnection())
             {
                 var result = connection.Execute(sql, item);
+                InsertOperationLog(sql, "修改", item);
                 return result;
             }
         }
@@ -88,5 +99,42 @@ namespace JqD.Data
                 throw new Exception("Failed to create connection");
             }
         }
+
+        private void InsertOperationLog(string sql, string operation, int id)
+        {
+            var log = new OperationLogs
+            {
+                ModelId = id,
+                ModelJson = "",
+                ModelType = "",
+                Operation = operation,
+                OperatorId = LoginUserSection.CurrentUser == null ? "" : LoginUserSection.CurrentUser.SystemUserId.ToString(),
+                OperationSQL = sql,
+                OperationTime = DateTime.Now
+            };
+            using (var connection = CreateConnection())
+            {
+                connection.Execute(AddOperationLogs, log);
+            }
+        }
+
+        private void InsertOperationLog<T>(string sql, string operation, params T[] items)
+        {
+            var log = new OperationLogs
+            {
+                ModelId = 0,
+                ModelJson = JsonConvert.SerializeObject(items),
+                ModelType = "",
+                Operation = LoginUserSection.CurrentUser == null ? "登录" : operation,
+                OperatorId = LoginUserSection.CurrentUser == null ? "" : LoginUserSection.CurrentUser.SystemUserId.ToString(),
+                OperationSQL = sql,
+                OperationTime = DateTime.Now
+            };
+            using (var connection = CreateConnection())
+            {
+                connection.Execute(AddOperationLogs, log);
+            }
+        }
+
     }
 }

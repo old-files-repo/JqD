@@ -41,7 +41,6 @@ namespace JqD.Data
             try
             {
                 var count = DatabaseProxy.InsertList(Sql.Add, items);
-
                 return count;
             }
             catch (SqlException sqlException)
