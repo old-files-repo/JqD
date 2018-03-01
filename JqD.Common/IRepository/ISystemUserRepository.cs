@@ -5,6 +5,6 @@ namespace JqD.Common.IRepository
 {
     public interface ISystemUserRepository : IRepositoryBase<SystemUser>
     {
-        
+
     }
 }

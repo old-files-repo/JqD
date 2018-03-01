@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using JqD.Common.Command.SystemManage;
@@ -8,6 +9,7 @@ using JqD.Common.IRepository;
 using JqD.Common.Models;
 using JqD.Data.CodeSection;
 using JqD.Data.Logic;
+using JqD.Entities.QueryModels;
 using JqD.Infrustruct.Enums;
 using log4net.Core;
 
@@ -131,6 +133,15 @@ namespace JqD.Common.Logic
                 SystemUserId = systemUser.Id
             };
             return loginUserInfo;
+        }
+
+        public IEnumerable<SystemUser> QueryByPage(QuerySystemUserModel queryParams, out int totleCount)
+        {
+            //var querys = new Dictionary<string, object>
+            //{
+            //    {"DWBH",filter.SqlBuilder.Where}
+            //};
+            return _systemUserRepository.QueryByPage(queryParams.StartNo, queryParams.Page* queryParams.Rows, out totleCount);
         }
     }
 }

@@ -2,6 +2,7 @@
 using FluentAssertions;
 using JqD.Command.Work;
 using JqD.Common;
+using JqD.Common.Logic;
 using JqD.Data.CodeSection;
 using JqD.Data.ShareModels;
 using JqD.Data.UnitOfWork;

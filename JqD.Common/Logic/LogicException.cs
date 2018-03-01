@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace JqD.Logic
+namespace JqD.Common.Logic
 {
     public class LogicException:Exception
     {

@@ -23,7 +23,7 @@ namespace JqD.Common.Repository
                           SELECT COUNT(1) FROM SystemUser;"
         };
 
-        public SystemUserRepository(ISqlDatabaseProxy databaseProxy)
+        public SystemUserRepository(ISqlDatabaseProxy databaseProxy, ISqlDatabaseProxy databaseProxy1)
             : base(databaseProxy)
         {
             Sql = SystemUserSql;

@@ -128,6 +128,10 @@
       <Project>{6CC373CC-791A-4474-B9C8-0397D759B753}</Project>
       <Name>JqD.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JqD.Entities\JqD.Entities.csproj">
+      <Project>{8AABA2AC-A0A4-43E2-A3E6-53B239759512}</Project>
+      <Name>JqD.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JqD.Infrustruct\JqD.Infrustruct.csproj">
       <Project>{AE6753A1-5DEB-426F-BFA5-A9F7CE5A73B3}</Project>
       <Name>JqD.Infrustruct</Name>

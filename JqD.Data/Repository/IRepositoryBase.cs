@@ -17,5 +17,8 @@ namespace JqD.Data.Repository
         IEnumerable<T> GetAll();
 
         IEnumerable<T> QueryByPage(int startNumber, int endNumber, out int totleRecords);
+
+        IEnumerable<T> QueryByPage(int startNumber, int endNumber,
+            out int totleRecords, Dictionary<string, object> querys);
     }
 }
