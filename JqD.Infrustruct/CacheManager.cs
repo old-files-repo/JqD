@@ -14,7 +14,7 @@ namespace JqD.Infrustruct
             var lockobj = new object();
             lock (lockobj)
             {
-                Cache = new MemoryCache("JqD");
+                Cache = new MemoryCache("JqDCache");
             }
         }
 
